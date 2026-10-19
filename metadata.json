@@ -1,0 +1,6 @@
+{
+  "name": "AI-Driven Rapid Prototyping - Ethos BA",
+  "description": "Website presentasi dan showcase hasil inisiatif Business Analyst: AI-Driven Rapid Prototyping untuk mempercepat kebutuhan operasional departemen tanpa membebani backlog IT.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
