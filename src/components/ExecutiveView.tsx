@@ -349,8 +349,9 @@ export function ExecutiveView({ onStartSlideMode, onOpenDesignSystem }: Executiv
                   <span>Pemrograman manual memakan puluhan jam kerja developer</span>
                 </div>
               </div>
-              <div className="p-3 bg-rose-950/30 border border-rose-900/40 rounded-xl text-xs text-rose-300">
-                Hasil: Departemen frustrasi, pekerjaan tertunda, dan terdorong mengunggah data ke website konverter gratisan luar.
+              <div className="p-3.5 rounded-xl text-xs font-medium methodology-danger-card shadow-xs">
+                <strong className="font-bold block mb-1">Dampak Negatif &amp; Risiko:</strong>
+                Departemen frustrasi, pekerjaan tertunda 1–3 bulan, dan terdorong mengunggah data sensitif (Bupot, Faktur Pajak) ke website konverter gratisan pihak ketiga.
               </div>
             </div>
 

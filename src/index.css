@@ -565,4 +565,27 @@ html.light .muara-solution-pill {
   font-weight: 800 !important;
 }
 
+/* Metode Konvensional Danger Impact Card in Metodologi section */
+.methodology-danger-card {
+  background-color: rgba(76, 5, 25, 0.45);
+  border: 1px solid rgba(244, 63, 94, 0.45);
+  color: #FECDD3;
+}
+
+.methodology-danger-card strong {
+  color: #FB7185;
+}
+
+html.light .methodology-danger-card {
+  background-color: #FFF1F2 !important;
+  border: 1px solid #FDA4AF !important;
+  color: #881337 !important;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.08) !important;
+}
+
+html.light .methodology-danger-card strong {
+  color: #9F1239 !important;
+}
+
+
 

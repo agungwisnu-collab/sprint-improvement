@@ -50,7 +50,11 @@ export function PortfolioShowcase() {
         >
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>Katalog Inisiatif Mikro</span>
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
+          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full transition-colors ${
+            activeTab === 'catalog'
+              ? 'bg-slate-900 text-white border border-slate-700 shadow-xs'
+              : 'bg-[#289CD7]/20 text-[#38BDF8] border border-[#289CD7]/40 shadow-xs'
+          }`}>
             {OTHER_TOOLS_CATALOG.length} Repo
           </span>
         </button>
