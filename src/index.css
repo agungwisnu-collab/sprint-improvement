@@ -11,7 +11,7 @@
     --surface-2: #161F30;
     --surface-border: rgba(255, 255, 255, 0.08);
 
-    /* Link Ethos Design System Semantic Tokens */
+    /* Ethos Rapid Prototyping Design System Semantic Tokens */
     --color-chart-1: #289CD7;
     --color-chart-2: #10B981;
     --color-chart-3: #F59E0B;
@@ -50,7 +50,7 @@
   }
 }
 
-/* Link Ethos Accent Glow */
+/* Ethos Brand Accent Glow */
 .ethos-glow {
   box-shadow: 0 0 25px -5px rgba(40, 156, 215, 0.25);
 }

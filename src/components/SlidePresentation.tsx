@@ -10,7 +10,7 @@ import {
   FileText, Clock, Grid, Play, Pause, RotateCcw, X, 
   ArrowRight, Star, CheckCircle2, ShieldCheck, Zap
 } from 'lucide-react';
-import { LinkEthosLogo, LinkEthosIcon } from './logo';
+import { SprintImprovementLogo, SprintImprovementIcon, LinkEthosLogo, LinkEthosIcon } from './logo';
 
 interface SlidePresentationProps {
   onExit: () => void;
@@ -142,8 +142,8 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
 
           <div className="h-4 w-px bg-slate-800 hidden sm:block" />
 
-          <div className="flex items-center gap-2">
-            <LinkEthosIcon size={22} />
+          <div className="flex items-center gap-2.5">
+            <SprintImprovementIcon size={24} />
             <div className="text-xs text-slate-300 font-medium hidden md:flex items-center gap-2">
               <span className="font-bold text-white tracking-tight">{TEAM_INFO.title}</span>
               <span className="text-slate-600">·</span>
@@ -239,37 +239,42 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
           >
             {/* SLIDE 1: Cover */}
             {currentSlideIndex === 0 && (
-              <div className="text-center py-4 px-4 max-w-4xl mx-auto space-y-5">
-                <div className="flex justify-center mb-1">
-                  <LinkEthosLogo size="lg" subtitle="Stand Up for Improvement Batch 5" />
+              <div className="text-center py-6 px-4 max-w-4xl mx-auto space-y-6">
+                <div className="flex justify-center mb-2">
+                  <SprintImprovementLogo size="lg" subtitle="Stand Up for Improvement Batch 5" batchBadge="#5" />
                 </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#289CD7]/10 border border-[#289CD7]/30 text-xs font-mono text-[#38BDF8]">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#289CD7]/15 border border-[#289CD7]/35 text-xs font-mono text-[#38BDF8]">
                   <span>{TEAM_INFO.event}</span>
                   <span className="text-slate-600">·</span>
-                  <span>Ethos Group</span>
+                  <span>{TEAM_INFO.organization}</span>
                 </div>
 
                 <div className="space-y-3">
-                  <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
                     AI-Driven Rapid Prototyping
                   </h1>
-                  <p className="text-lg sm:text-xl text-slate-200 font-normal max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-base sm:text-xl text-slate-200 font-normal max-w-2xl mx-auto leading-relaxed">
                     Solusi Cepat Kebutuhan Operasional Departemen Tanpa Membebani Backlog IT
                   </p>
                 </div>
 
-                <div className="pt-5 border-t border-slate-800">
-                  <div className="text-[11px] uppercase font-mono tracking-wider text-slate-400 mb-3">
+                <div className="pt-6 border-t border-slate-800/80">
+                  <div className="text-[11px] uppercase font-mono tracking-wider text-slate-400 mb-3.5">
                     Nama Anggota Tim Business Analyst:
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-2xl mx-auto">
                     {TEAM_INFO.members.map((member, mIdx) => (
-                      <div key={mIdx} className="p-3 bg-[#0E1420] border border-slate-800 rounded-xl text-left">
+                      <div key={mIdx} className="p-3.5 bg-[#0E1420]/90 border border-slate-800 hover:border-slate-700 rounded-xl text-left transition-all">
                         <div className="text-sm font-bold text-white">{member.name}</div>
                         <div className="text-xs text-[#38BDF8] font-mono mt-0.5">{member.role}</div>
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Keyboard Navigation Quick Hint */}
+                <div className="inline-flex items-center gap-2 text-[11px] font-mono text-slate-500 pt-2">
+                  <span>Gunakan tombol <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Right Arrow →</kbd> atau <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Space</kbd> untuk berpindah slide</span>
                 </div>
               </div>
             )}

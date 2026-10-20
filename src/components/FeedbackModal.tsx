@@ -85,7 +85,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   placeholder="Nama Lengkap"
                   value={evaluatorName}
                   onChange={(e) => setEvaluatorName(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7]"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7] focus:ring-2 focus:ring-[#289CD7]/40 transition-all"
                 />
               </div>
 
@@ -96,7 +96,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 <select
                   value={evaluatorRole}
                   onChange={(e) => setEvaluatorRole(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-[#289CD7]"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white focus:outline-none focus:border-[#289CD7] focus:ring-2 focus:ring-[#289CD7]/40 transition-all cursor-pointer"
                 >
                   <option value="Dewan Juri">Dewan Juri Stand Up</option>
                   <option value="Manajemen IT">Manajemen / VP IT</option>
@@ -116,7 +116,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 placeholder="Inisiatif sangat baik memecah backlog IT, eksekusi tools cepat dan tepat sasaran..."
                 value={feedbackText}
                 onChange={(e) => setFeedbackText(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7]"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7] focus:ring-2 focus:ring-[#289CD7]/40 transition-all resize-none"
               />
             </div>
 

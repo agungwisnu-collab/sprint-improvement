@@ -11,7 +11,6 @@ import {
   Presentation, ArrowRight, ShieldCheck, Clock, 
   Layers, CheckCircle2, ChevronRight, Terminal, FileCheck, Sparkles
 } from 'lucide-react';
-import { LinkEthosLogo } from './logo';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
@@ -27,7 +26,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
       {/* Executive Briefing Hero Section */}
       <section className="relative pt-10 pb-16 md:pt-16 md:pb-20 border-b border-slate-800/80 bg-grid-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          {/* Metadata Kicker with Link Ethos Design System Indicator */}
+          {/* Metadata Kicker with Design System Indicator */}
           <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-400 mb-6">
             <span className="text-[#38BDF8] font-semibold">{TEAM_INFO.event}</span>
             <span className="text-slate-600">/</span>
@@ -35,8 +34,8 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
             <span className="text-slate-600">/</span>
             <span className="text-emerald-400">Executive Report</span>
             <span className="text-slate-600">/</span>
-            <Badge variant="default" className="text-[10px] py-0 px-2">
-              Link Ethos Design System v1.0
+            <Badge variant="default" className="text-[10px] py-0 px-2 font-mono">
+              Ethos BA Design System v1.0
             </Badge>
           </div>
 

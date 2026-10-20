@@ -4,7 +4,7 @@ import {
   X, Check, Copy, CheckCircle2, AlertTriangle, AlertCircle, 
   Info, Download, Paperclip, Star, Award, Layers2
 } from 'lucide-react';
-import { LinkEthosLogo, LinkEthosIcon } from './logo';
+import { SprintImprovementIcon, LinkEthosLogo, LinkEthosIcon } from './logo';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Card } from './ui/card';
@@ -46,16 +46,27 @@ export function DesignSystemModal({ isOpen, onClose }: DesignSystemModalProps) {
         {/* Modal Header */}
         <div className="px-6 py-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <LinkEthosLogo size="md" subtitle="Design System & Atomic Specification" />
-            <Badge variant="default" className="hidden sm:inline-flex text-[10px]">
-              v1.0.0 Resmi
-            </Badge>
+            <SprintImprovementIcon size={28} />
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-white text-sm tracking-tight font-sans">
+                  Ethos Rapid Prototyping Design System
+                </span>
+                <Badge variant="default" className="text-[10px] font-mono">
+                  v1.0 Stand Up #5
+                </Badge>
+              </div>
+              <span className="text-[10px] text-slate-400 font-mono hidden sm:inline">
+                Standarisasi Desain Antarmuka Inisiatif Micro-Tools (Link Ethos, Meethos, Converter)
+              </span>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+              aria-label="Tutup modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -94,9 +105,14 @@ export function DesignSystemModal({ isOpen, onClose }: DesignSystemModalProps) {
           {activeTab === 'tokens' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-sm font-bold text-white mb-1">Palet Warna Semantik Link Ethos (OKLCH & Hex)</h3>
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <h3 className="text-sm font-bold text-white">Palet Warna Semantik Desain Sistem (OKLCH &amp; Hex)</h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#289CD7]/15 text-[#38BDF8] border border-[#289CD7]/30">
+                    Diterapkan pada Link Ethos &amp; Katalog Tools
+                  </span>
+                </div>
                 <p className="text-xs text-slate-400">
-                  Warna primer Brand Cyan <code className="text-[#38BDF8]">#289CD7</code> dengan rasio kontras WCAG 2.1 AA di atas kanvas gelap.
+                  Warna primer Brand Cyan <code className="text-[#38BDF8]">#289CD7</code> dengan rasio kontras WCAG 2.1 AA di atas kanvas gelap, terstandarisasi untuk seluruh micro-tools internal.
                 </p>
               </div>
 
@@ -139,7 +155,7 @@ export function DesignSystemModal({ isOpen, onClose }: DesignSystemModalProps) {
                   <div className="py-2.5 flex flex-col md:flex-row md:items-baseline justify-between gap-2">
                     <span className="text-[11px] font-mono text-slate-400 w-44 shrink-0">Display 1 (text-4xl)</span>
                     <span className="text-3xl font-extrabold tracking-tight text-white font-sans">
-                      Link Ethos All-in-One Platform
+                      AI-Driven Rapid Prototyping Platform
                     </span>
                   </div>
                   <div className="py-2.5 flex flex-col md:flex-row md:items-baseline justify-between gap-2">

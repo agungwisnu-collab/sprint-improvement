@@ -52,7 +52,7 @@ export default function App() {
             onClose={() => setIsFeedbackOpen(false)}
           />
 
-          {/* Link Ethos Official Design System Showcase Modal */}
+          {/* Ethos Rapid Prototyping Design System Showcase Modal */}
           <DesignSystemModal
             isOpen={isDesignSystemOpen}
             onClose={() => setIsDesignSystemOpen(false)}
