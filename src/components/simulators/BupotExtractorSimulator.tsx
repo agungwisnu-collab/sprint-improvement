@@ -268,7 +268,7 @@ export function BupotExtractorSimulator() {
           <span>Keamanan Data: <strong className="text-emerald-400">Zero Data Leak (100% Offline)</strong></span>
         </div>
         <div className="text-slate-400">
-          Dampak: <span className="text-[#38BDF8] font-medium">Efisiensi SLA Tim Tax &amp; Masuk 3 Besar Tim Finance</span>
+          Dampak: <span className="text-[#38BDF8] font-medium">Efisiensi SLA Tim Tax FHI &amp; Masuk 3 Besar Improvement Sprint</span>
         </div>
       </div>
     </div>

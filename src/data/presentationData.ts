@@ -67,15 +67,14 @@ export const FISHBONE_DATA = [
     causes: [
       "Kapasitas developer IT 100% terikat KPI IT, Core System Ethos & KPI Utama",
       "Keterbatasan programmer untuk mengurusi tugas operasional mikro",
-      "Business Analyst sebelumnya bertindak pasif hanya menulis dokumen FRD"
+      "Business Analyst sebelumnya bertindak pasif hanya menulis dokumen FSD"
     ]
   },
   {
     category: "2. Metode (Process)",
     causes: [
-      "SDLC Konvensional panjang (BRD → Antre IT SDLC → Koding Nol → Testing → Prod)",
-      "Birokrasi antrean tiket IT memakan waktu 1 hingga 3 bulan",
-      "Ketiadaan jalur ekspres (fast-track) untuk micro-tools harian departemen"
+      "Metode konvensional mewajibkan seluruh pembuatan tools melewati proses admintistrasi dan antrean SDLC developer IT",
+      "Birokrasi antrean tiket IT memakan waktu 1 hingga 3 bulan"
     ]
   },
   {
@@ -139,10 +138,10 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: "Aplikasi web internal untuk manajemen dan reservasi seluruh ruang rapat perusahaan secara real-time, dilengkapi display signage mode dan analitik okupansi per departemen.",
     businessNeed: "Sebelumnya jadwal ruang rapat sering bentrok, tidak ada visibilitas utilitas ruangan, dan pencatatan manual membuang waktu koordinasi antar-divisi.",
     impactMetrics: [
-      { label: "Total Reservasi Tercatat", value: "203 Reservasi" },
-      { label: "Total Jam Rapat Terkelola", value: "672 Jam" },
-      { label: "Total Partisipasi", value: "1.493 Orang" },
-      { label: "Lead Time Pembuatan", value: "3 Hari Kerja" }
+      { label: "Total Reservasi Tercatat", value: "224 Sesi" },
+      { label: "Total Jam Rapat Terkelola", value: "740 jam terpakai" },
+      { label: "Total Partisipasi", value: "1632 orang hadir" },
+      { label: "Lead Time Pembuatan", value: "~18 Hari Kerja" }
     ],
     keyFeatures: [
       "Master Kalender & Real-time Booking Slot",
@@ -162,9 +161,9 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: "Platform penyingkat tautan resmi dan bio pages terintegrasi Ethos Group, menggantikan Bitly dan link aggregator publik beriklan.",
     businessNeed: "Menghapus ketergantungan pada Bitly yang menyisipkan iklan dan acesse.one yang berisiko pelacakan data, serta memperkuat branding domain resmi ethos.co.id.",
     impactMetrics: [
-      { label: "Total Trafik Terlayani", value: "4.650 Klik" },
-      { label: "Pengunjung Unik", value: "2.256 IP" },
-      { label: "Pengguna Mobile", value: "56%" },
+      { label: "Total Trafik Terlayani", value: "7128 Total Traffic" },
+      { label: "Pengunjung Unik", value: "3013 Unique IP addresses" },
+      { label: "Top Performer", value: "/ethossurvey2026 (2483 total klik)" },
       { label: "Iklan Pihak Ketiga", value: "0% (Bebas Iklan)" }
     ],
     keyFeatures: [
@@ -173,7 +172,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       "Corporate Bio Pages builder untuk recruitment & event",
       "Sistem Kritik & Saran terintegrasi"
     ],
-    builtIn: "2 Hari Kerja",
+    builtIn: "~25 Hari Kerja",
     techStack: ["React", "Express", "PostgreSQL/SQLite", "Tailwind CSS"]
   },
   {
@@ -185,10 +184,10 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     description: "Software otomasi ekstraksi data Bukti Potong (Bupot) dan Faktur Pajak Masukan/Keluaran dari PDF resmi Coretax menjadi format Excel rekapitulasi terstruktur.",
     businessNeed: "Tim Tax sebelumnya menghabiskan puluhan jam manual mengetik/mencopy nomor faktur, NPWP, dan DPP dari tumpukan ratusan PDF Coretax, dengan risiko kesalahan input dan batas waktu pelaporan.",
     impactMetrics: [
-      { label: "Waktu Proses per 100 PDF", value: "< 15 Detik (vs 4 Jam)" },
+      { label: "Waktu Proses per 100 PDF", value: "< 10 Menit (vs 4 Jam)" },
       { label: "Akurasi Ekstraksi", value: "100% Presisi" },
       { label: "Waktu Pembuatan Tool", value: "< 1 Jam (Inisiasi Awal)" },
-      { label: "Peringkat Tim Finance", value: "3 Besar Efisiensi" }
+      { label: "Peringkat Tim Tax FHI", value: "3 Besar Improvement Sprint" }
     ],
     keyFeatures: [
       "Batch PDF Extraction dari folder input ke output secara otomatis",
@@ -232,7 +231,6 @@ export const OTHER_TOOLS_CATALOG = [
   { name: "ci-cd", category: "DevOps", desc: "Automated build script untuk deployment ringan" },
   { name: "compiler-crm", category: "Operations", desc: "Kompilasi riwayat leads sales untuk pipeline mingguan" },
   { name: "converter-shipping-rate", category: "Converter Tool", desc: "Kalkulator konversi tarif logistik multi-kurir" },
-  { name: "cookies-po", category: "Operations", desc: "Pemesanan purchase order musiman departemen" },
   { name: "crawling-rate", category: "Data Tool", desc: "Parser perbandingan harga pasar kompetitor" },
   { name: "data-science", category: "Data Tool", desc: "Script analisis tren penjualan berbasis Python notebook" },
   { name: "desktop-mascot-assistant", category: "Productivity", desc: "Widget pengingat istirahat dan tugas harian" },
@@ -274,7 +272,7 @@ export const IMPACT_TABLE = [
   {
     aspek: "Efficiency",
     sebelum: "Proses rekap pajak dan payroll manual memakan waktu berhari-hari menjelang deadline",
-    hasil: "Efisiensi waktu pemenuhan SLA tim Tax & Finance (membantu pencapaian 3 Besar Tim Finance)",
+    hasil: "Efisiensi waktu pemenuhan SLA tim Tax FHI (membantu pencapaian 3 Besar Improvement Sprint)",
     tag: "SLA Tercapai"
   },
   {
@@ -318,7 +316,7 @@ export const KEY_TAKEAWAYS = [
   },
   {
     title: "Validasi Nyata di Lapangan",
-    desc: "Keberhasilan tools bukan diukur dari kecanggihan teknologinya semata, melainkan dari seberapa cepat tools tersebut menyelesaikan masalah harian tim kerja (terbukti dari pencapaian 3 Besar Tim Finance, simplifikasi import Hashmicro HC, dan sistem support lainnya)."
+    desc: "Keberhasilan tools bukan diukur dari kecanggihan teknologinya semata, melainkan dari seberapa cepat tools tersebut menyelesaikan masalah harian tim kerja (terbukti dari pencapaian 3 Besar Tim Tax FHI, simplifikasi import Hashmicro HC, dan sistem support lainnya)."
   }
 ];
 
@@ -368,7 +366,7 @@ export const SLIDES_CONFIG: SlideItem[] = [
     id: 4,
     slideNumber: 4,
     title: "Analisis 5 Whys (Bagian 1)",
-    subtitle: "Kapasitas IT & Keresahan Shadow IT",
+    subtitle: "Development Priority & Shadow IT",
     category: "analysis",
     speakerNotes: "Mengapa tertunda 1-3 bulan? Karena dev IT fokus penuh ke Core System. Mengapa memicu keresahan VP? Karena departemen terpaksa pakai tools gratisan luar (Bitly beriklan, acesse.one berisiko malware, konversi Bupot ke pihak ketiga)."
   },

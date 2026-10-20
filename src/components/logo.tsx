@@ -222,7 +222,7 @@ export function SprintImprovementLogo({
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5 leading-none">
             <span className={`font-black tracking-tight text-white font-sans ${textSizes[size]}`}>
-              SPRINT<span className="text-[#38BDF8] ml-1">IMPROVEMENT</span>
+              IMPROVEMENT<span className="text-[#38BDF8] ml-1">SPRINT</span>
             </span>
             {batchBadge && (
               <span className="px-1.5 py-0.5 text-[10px] font-mono font-bold rounded-md bg-[#289CD7]/20 border border-[#289CD7]/40 text-[#38BDF8]">

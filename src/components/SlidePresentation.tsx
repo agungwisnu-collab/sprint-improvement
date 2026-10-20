@@ -325,11 +325,6 @@ export function SlidePresentation({
                 <div className="flex justify-center mb-2">
                   <SprintImprovementLogo size="lg" subtitle="Stand Up for Improvement Batch 5" batchBadge="#5" />
                 </div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#289CD7]/15 border border-[#289CD7]/35 text-xs font-mono text-[#38BDF8]">
-                  <span>{TEAM_INFO.event}</span>
-                  <span className="text-slate-600">·</span>
-                  <span>{TEAM_INFO.organization}</span>
-                </div>
 
                 <div className="space-y-3">
                   <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
@@ -410,11 +405,8 @@ export function SlidePresentation({
                   <div>
                     <div className="text-xs font-mono text-[#38BDF8]">Slide 03 · Root Cause Analysis</div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                      Analisis Akar Masalah (Diagram Tulang Ikan / Ishikawa)
+                      Analisis Akar Masalah (Ishikawa Fishbone)
                     </h2>
-                  </div>
-                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#289CD7]/15 border border-[#289CD7]/35 text-[11px] font-mono text-[#38BDF8]">
-                    <span>4 Dimensi Penyebab</span>
                   </div>
                 </div>
 
@@ -441,7 +433,7 @@ export function SlidePresentation({
                           </li>
                           <li className="flex items-start gap-1.5">
                             <span className="text-[#38BDF8] font-mono">↳</span>
-                            <span>BA sebelumnya pasif hanya menulis dokumen FRD</span>
+                            <span>BA sebelumnya pasif hanya menulis dokumen FSD</span>
                           </li>
                         </ul>
                       </div>
@@ -455,15 +447,11 @@ export function SlidePresentation({
                         <ul className="text-[11px] sm:text-xs text-slate-300 space-y-1">
                           <li className="flex items-start gap-1.5">
                             <span className="text-[#38BDF8] font-mono">↳</span>
-                            <span>SDLC konvensional panjang (BRD → Antre IT → Prod)</span>
+                            <span>Metode konvensional mewajibkan seluruh pembuatan tools melewati proses admintistrasi dan antrean SDLC developer IT</span>
                           </li>
                           <li className="flex items-start gap-1.5">
                             <span className="text-[#38BDF8] font-mono">↳</span>
                             <span>Birokrasi antrean tiket memakan waktu 1–3 bulan</span>
-                          </li>
-                          <li className="flex items-start gap-1.5">
-                            <span className="text-[#38BDF8] font-mono">↳</span>
-                            <span>Ketiadaan jalur ekspres mikro-tools operasional</span>
                           </li>
                         </ul>
                       </div>
@@ -555,7 +543,7 @@ export function SlidePresentation({
               <div className="space-y-4">
                 <div className="border-b border-white/[0.08] pb-3">
                   <div className="text-xs font-mono text-blue-400">Slide 04 · 5 Whys Analysis (Part 1)</div>
-                  <h2 className="text-2xl font-bold text-white tracking-tight">Analisis 5 Whys: Keterlambatan &amp; Shadow IT</h2>
+                  <h2 className="text-2xl font-bold text-white tracking-tight">Analisis 5 Whys: Development Priority &amp; Shadow IT</h2>
                 </div>
 
                 <div className="space-y-3">
@@ -592,9 +580,9 @@ export function SlidePresentation({
                   <div className="p-4 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <span className="text-xs font-mono text-blue-400 font-bold block mb-1.5">Why #3 · Mengapa kebutuhan operasional tidak segera dibuatkan solusi internal?</span>
                     <ul className="text-xs text-slate-200 space-y-1 font-sans">
-                      <li>• Metode konvensional mewajibkan seluruh pembuatan tools melewati antrean SDLC developer IT</li>
+                      <li>• Metode konvensional mewajibkan seluruh pembuatan tools melewati proses admintistrasi dan antrean SDLC developer IT</li>
                       <li>• Koding manual dari nol (scratch) beserta birokrasi tiket menyita waktu berbulan-bulan</li>
-                      <li>• Business Analyst sebelumnya hanya bertindak pasif sebagai pembuat dokumen FRD</li>
+                      <li>• Business Analyst sebelumnya hanya bertindak pasif sebagai pembuat dokumen FSD</li>
                     </ul>
                   </div>
 
@@ -682,21 +670,21 @@ export function SlidePresentation({
                     <div className="text-xs font-mono text-blue-400">Slide 08 · Portfolio System 1</div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">Meethos · booking.ethos.co.id</h2>
                   </div>
-                  <span className="text-xs font-mono text-emerald-400">Lead Time: 3 Hari Kerja</span>
+                  <span className="text-xs font-mono text-emerald-400">Lead Time: ~18 Hari Kerja</span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Total Reservasi</div>
-                    <div className="text-xl font-bold text-white font-mono mt-0.5">203 Sesi</div>
+                    <div className="text-xl font-bold text-white font-mono mt-0.5">224</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <div className="text-[11px] font-mono text-slate-400">Jam Rapat Terkelola</div>
-                    <div className="text-xl font-bold text-blue-400 font-mono mt-0.5">672 Jam</div>
+                    <div className="text-[11px] font-mono text-slate-400">Total Jam Rapat</div>
+                    <div className="text-xl font-bold text-blue-400 font-mono mt-0.5">740 jam terpakai</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Total Partisipasi</div>
-                    <div className="text-xl font-bold text-emerald-400 font-mono mt-0.5">1.493 Orang</div>
+                    <div className="text-xl font-bold text-emerald-400 font-mono mt-0.5">1632 orang hadir</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Okupansi Tertinggi</div>
@@ -725,21 +713,22 @@ export function SlidePresentation({
                     <div className="text-xs font-mono text-blue-400">Slide 09 · Portfolio System 2</div>
                     <h2 className="text-2xl font-bold text-white tracking-tight">link.ethos.co.id</h2>
                   </div>
-                  <span className="text-xs font-mono text-emerald-400">Lead Time: 2 Hari Kerja</span>
+                  <span className="text-xs font-mono text-emerald-400">Lead Time: ~25 Hari Kerja</span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <div className="text-[11px] font-mono text-slate-400">Total Trafik</div>
-                    <div className="text-xl font-bold text-white font-mono mt-0.5">4.650 Klik</div>
+                    <div className="text-[11px] font-mono text-slate-400">Total Traffic</div>
+                    <div className="text-xl font-bold text-white font-mono mt-0.5">7128</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Pengunjung Unik</div>
-                    <div className="text-xl font-bold text-blue-400 font-mono mt-0.5">2.256 IP</div>
+                    <div className="text-sm sm:text-base font-bold text-blue-400 font-mono mt-0.5 truncate" title="3013 Unique IP addresses">3013 Unique IP addresses</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <div className="text-[11px] font-mono text-slate-400">Pengguna Mobile</div>
-                    <div className="text-xl font-bold text-emerald-400 font-mono mt-0.5">56% Mobile</div>
+                    <div className="text-[11px] font-mono text-slate-400">Top Performer</div>
+                    <div className="text-xs sm:text-sm font-bold text-emerald-400 font-mono mt-0.5 truncate">/ethossurvey2026</div>
+                    <div className="text-[10px] text-slate-400 font-mono mt-0.5">2483 total klik</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Iklan Pihak Ketiga</div>
@@ -774,7 +763,7 @@ export function SlidePresentation({
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Waktu Proses 100 PDF</div>
-                    <div className="text-xl font-bold text-white font-mono mt-0.5">&lt; 15 Detik</div>
+                    <div className="text-xl font-bold text-white font-mono mt-0.5">&lt; 10 Menit</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Akurasi Ekstraksi</div>
@@ -785,8 +774,8 @@ export function SlidePresentation({
                     <div className="text-xl font-bold text-blue-400 font-mono mt-0.5">100% Offline</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <div className="text-[11px] font-mono text-slate-400">Peringkat Tim Finance</div>
-                    <div className="text-xl font-bold text-amber-400 font-mono mt-0.5">3 Besar SLA</div>
+                    <div className="text-[11px] font-mono text-slate-400">Peringkat Tim Tax FHI</div>
+                    <div className="text-sm sm:text-base font-bold text-amber-400 font-mono mt-0.5">3 Besar Improvement Sprint</div>
                   </div>
                 </div>
 
@@ -816,8 +805,8 @@ export function SlidePresentation({
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <div className="text-[11px] font-mono text-slate-400">Kecepatan Konversi</div>
-                    <div className="text-xl font-bold text-white font-mono mt-0.5">&lt; 3 Detik</div>
+                    <div className="text-[11px] font-mono text-slate-400">Kecepatan Konversi 1K Data</div>
+                    <div className="text-xl font-bold text-white font-mono mt-0.5">&lt; 2 Menit</div>
                   </div>
                   <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
                     <div className="text-[11px] font-mono text-slate-400">Kesalahan Mapping</div>
