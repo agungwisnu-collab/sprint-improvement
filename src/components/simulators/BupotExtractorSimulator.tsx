@@ -86,11 +86,11 @@ export function BupotExtractorSimulator() {
   });
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+    <div className="bg-[#0E1522] border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl">
       {/* Top Header of Simulator */}
-      <div className="px-5 py-3 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-5 py-3 bg-[#070A0F] border-b border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)] inline-block" />
           <span className="text-sm font-semibold text-white tracking-wide">
             Simulator: Bupot & Faktur Extractor (Coretax)
           </span>
@@ -100,19 +100,19 @@ export function BupotExtractorSimulator() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex bg-slate-900 border border-slate-700 rounded-lg p-0.5">
+          <div className="flex bg-[#0B0F17] border border-white/[0.08] rounded-lg p-0.5">
             <button
               onClick={() => setActiveTab('terminal')}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                activeTab === 'terminal' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+                activeTab === 'terminal' ? 'bg-[#131D2E] text-white shadow-sm border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Terminal Console
             </button>
             <button
               onClick={() => setActiveTab('excel')}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                activeTab === 'excel' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+                activeTab === 'excel' ? 'bg-[#131D2E] text-white shadow-sm border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Preview Excel
@@ -122,7 +122,7 @@ export function BupotExtractorSimulator() {
           <button
             onClick={runExtraction}
             disabled={isProcessing}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 text-white text-xs font-medium rounded-lg transition-colors shadow-sm"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-[#38BDF8] via-[#289CD7] to-[#0284C7] hover:brightness-110 disabled:opacity-50 text-white text-xs font-semibold rounded-lg transition-all shadow-[0_0_15px_rgba(40,156,215,0.3)]"
           >
             {isProcessing ? (
               <>
@@ -141,7 +141,7 @@ export function BupotExtractorSimulator() {
 
       {/* Simulator Body */}
       {activeTab === 'terminal' ? (
-        <div className="p-4 bg-slate-950 font-mono text-xs leading-relaxed h-80 overflow-y-auto">
+        <div className="terminal-window p-4 bg-[#070A0F] font-mono text-xs leading-relaxed h-80 overflow-y-auto border-b border-white/[0.08]">
           <div className="text-slate-500 mb-2">
             Ethos Tax Automation CLI [Version 1.0.4] · Keamanan Data Finansial Terjamin
           </div>
@@ -160,9 +160,9 @@ export function BupotExtractorSimulator() {
                     : isFinish
                     ? "text-amber-300 font-semibold"
                     : isOffline
-                    ? "text-cyan-400"
+                    ? "text-[#38BDF8]"
                     : isInfo
-                    ? "text-blue-400"
+                    ? "text-[#289CD7]"
                     : "text-slate-300"
                 }`}
               >
@@ -171,36 +171,36 @@ export function BupotExtractorSimulator() {
             );
           })}
           {isProcessing && (
-            <div className="text-blue-400 animate-pulse mt-2">
+            <div className="text-[#38BDF8] animate-pulse mt-2">
               &gt; Mengurai token XML/PDF struktur faktur masukan...
             </div>
           )}
         </div>
       ) : (
-        <div className="p-4 bg-slate-900">
+        <div className="p-4 bg-[#0B0F17]">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="flex items-center gap-2">
               <span className="text-xs text-slate-400">Filter Data:</span>
               <button
                 onClick={() => setFilterType('all')}
-                className={`px-2.5 py-1 text-xs rounded-md ${
-                  filterType === 'all' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'
+                className={`px-2.5 py-1 text-xs rounded-md transition-colors ${
+                  filterType === 'all' ? 'bg-[#131D2E] text-white border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Semua (30)
               </button>
               <button
                 onClick={() => setFilterType('masuk')}
-                className={`px-2.5 py-1 text-xs rounded-md ${
-                  filterType === 'masuk' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'
+                className={`px-2.5 py-1 text-xs rounded-md transition-colors ${
+                  filterType === 'masuk' ? 'bg-[#131D2E] text-white border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Pajak Masuk (22)
               </button>
               <button
                 onClick={() => setFilterType('keluar')}
-                className={`px-2.5 py-1 text-xs rounded-md ${
-                  filterType === 'keluar' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'
+                className={`px-2.5 py-1 text-xs rounded-md transition-colors ${
+                  filterType === 'keluar' ? 'bg-[#131D2E] text-white border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 Pajak Keluar (8)
@@ -209,32 +209,32 @@ export function BupotExtractorSimulator() {
 
             <button
               onClick={handleDownloadCsv}
-              className="flex items-center gap-1.5 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
               Unduh Hasil Rekap Pajak.xlsx
             </button>
           </div>
 
-          <div className="overflow-x-auto border border-slate-800 rounded-lg">
+          <div className="overflow-x-auto border border-white/[0.08] rounded-lg">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-950 text-slate-400 uppercase font-medium">
+              <thead className="bg-[#070A0F] text-slate-400 uppercase font-mono text-[10px] tracking-wider border-b border-white/[0.08]">
                 <tr>
-                  <th className="px-3 py-2">Nomor Faktur / Bupot</th>
-                  <th className="px-3 py-2">Jenis</th>
-                  <th className="px-3 py-2">Lawan Transaksi</th>
-                  <th className="px-3 py-2">NPWP</th>
-                  <th className="px-3 py-2 text-right">DPP (Rp)</th>
-                  <th className="px-3 py-2 text-right">PPN 11% (Rp)</th>
-                  <th className="px-3 py-2">Status</th>
+                  <th className="px-3 py-2.5">Nomor Faktur / Bupot</th>
+                  <th className="px-3 py-2.5">Jenis</th>
+                  <th className="px-3 py-2.5">Lawan Transaksi</th>
+                  <th className="px-3 py-2.5">NPWP</th>
+                  <th className="px-3 py-2.5 text-right">DPP (Rp)</th>
+                  <th className="px-3 py-2.5 text-right">PPN 11% (Rp)</th>
+                  <th className="px-3 py-2.5">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 font-mono">
+              <tbody className="divide-y divide-white/[0.06] font-mono">
                 {filteredRecords.map((item, i) => (
-                  <tr key={i} className="hover:bg-slate-800/50">
+                  <tr key={i} className="hover:bg-[#131D2E]/50 transition-colors">
                     <td className="px-3 py-2 text-white font-medium">{item.nomor}</td>
                     <td className="px-3 py-2">
-                      <span className={item.jenis === 'Pajak Masuk' ? 'text-blue-400' : 'text-amber-400'}>
+                      <span className={item.jenis === 'Pajak Masuk' ? 'text-[#38BDF8]' : 'text-amber-400'}>
                         {item.jenis}
                       </span>
                     </td>
@@ -245,7 +245,7 @@ export function BupotExtractorSimulator() {
                       {item.ppn.toLocaleString('id-ID')}
                     </td>
                     <td className="px-3 py-2 font-sans">
-                      <span className="text-emerald-400 flex items-center gap-1">
+                      <span className="text-emerald-400 flex items-center gap-1 font-medium">
                         <CheckCircle className="w-3 h-3" />
                         {item.status}
                       </span>
@@ -259,16 +259,16 @@ export function BupotExtractorSimulator() {
       )}
 
       {/* Simulator Footer Status */}
-      <div className="px-4 py-2.5 bg-slate-950/80 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400">
+      <div className="px-4 py-2.5 bg-[#070A0F] border-t border-white/[0.08] flex flex-wrap items-center justify-between text-xs text-slate-400">
         <div className="flex items-center gap-4">
-          <span>Inisiasi Awal: <strong>&lt; 1 Jam</strong></span>
+          <span>Inisiasi Awal: <strong className="text-white">&lt; 1 Jam</strong></span>
           <span>·</span>
-          <span>Zero IT Backlog: <strong>0 Story Points</strong></span>
+          <span>Zero IT Backlog: <strong className="text-white">0 Story Points</strong></span>
           <span>·</span>
-          <span>Keamanan Data: <strong>Zero Data Leak (100% Offline)</strong></span>
+          <span>Keamanan Data: <strong className="text-emerald-400">Zero Data Leak (100% Offline)</strong></span>
         </div>
         <div className="text-slate-400">
-          Dampak: Efisiensi SLA Tim Tax &amp; Masuk 3 Besar Tim Finance
+          Dampak: <span className="text-[#38BDF8] font-medium">Efisiensi SLA Tim Tax &amp; Masuk 3 Besar Tim Finance</span>
         </div>
       </div>
     </div>

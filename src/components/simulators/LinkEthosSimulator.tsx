@@ -56,12 +56,12 @@ export function LinkEthosSimulator() {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+    <div className="bg-[#0E1522] border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl">
       {/* Header bar with Official Link Ethos Branding */}
-      <div className="px-5 py-3.5 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-5 py-3.5 bg-[#070A0F] border-b border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <LinkEthosLogo size="sm" subtitle="Official Shortlink & Bio Pages System" />
-          <Badge variant="default" className="text-[10px] hidden sm:inline-flex">
+          <Badge variant="default" className="text-[10px] hidden sm:inline-flex bg-[#289CD7]/15 text-[#38BDF8] border-[#289CD7]/30">
             Bebas Malware &amp; Iklan
           </Badge>
         </div>
@@ -71,12 +71,12 @@ export function LinkEthosSimulator() {
             <ShieldCheck className="w-3.5 h-3.5" /> Domain Resmi Terverifikasi
           </span>
           <span>·</span>
-          <span className="font-mono text-slate-300">link.ethos.co.id</span>
+          <span className="font-mono text-[#38BDF8]">link.ethos.co.id</span>
         </div>
       </div>
 
       {/* Metrics Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-slate-800 bg-slate-950/60 border-b border-slate-800">
+      <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-white/[0.08] bg-[#0B0F17]/70 border-b border-white/[0.08]">
         <div className="p-4">
           <div className="text-xs text-slate-400">Total Trafik Periode</div>
           <div className="text-xl font-bold text-white font-mono mt-1">4.650</div>
@@ -89,7 +89,7 @@ export function LinkEthosSimulator() {
         </div>
         <div className="p-4">
           <div className="text-xs text-slate-400">Perangkat Utama</div>
-          <div className="text-xl font-bold text-blue-400 font-mono mt-1">56% Mobile</div>
+          <div className="text-xl font-bold text-[#38BDF8] font-mono mt-1">56% Mobile</div>
           <div className="text-xs text-slate-500 mt-0.5">43% Desktop PC · 1% Tablet</div>
         </div>
         <div className="p-4">
@@ -102,9 +102,9 @@ export function LinkEthosSimulator() {
       {/* Body: Form + List */}
       <div className="p-5 grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Form: Create Link */}
-        <div className="lg:col-span-5 bg-slate-950/70 border border-slate-800 p-4 rounded-xl">
+        <div className="lg:col-span-5 bg-[#070A0F]/80 border border-white/[0.08] p-4 rounded-xl shadow-inner">
           <h4 className="text-sm font-semibold text-white mb-1 flex items-center gap-2">
-            <Link2 className="w-4 h-4 text-blue-400" /> Buat Shortlink Resmi Baru
+            <Link2 className="w-4 h-4 text-[#38BDF8]" /> Buat Shortlink Resmi Baru
           </h4>
           <p className="text-xs text-slate-400 mb-4">
             Menggunakan subdomain resmi Ethos Group untuk menjaga citra profesional dan keamanan tautan.
@@ -120,7 +120,7 @@ export function LinkEthosSimulator() {
                 placeholder="https://drive.google.com/file/d/1aB2c3... atau halaman event"
                 value={targetUrl}
                 onChange={(e) => setTargetUrl(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 bg-[#0B0F17] border border-white/[0.08] rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7]"
               />
             </div>
 
@@ -129,7 +129,7 @@ export function LinkEthosSimulator() {
                 Kustom Tautan (Slug Resmi)
               </label>
               <div className="flex items-center">
-                <span className="px-3 py-2 bg-slate-800 border border-r-0 border-slate-700 rounded-l-lg text-xs text-slate-400 font-mono">
+                <span className="px-3 py-2 bg-[#131D2E] border border-r-0 border-white/[0.08] rounded-l-lg text-xs text-slate-300 font-mono">
                   link.ethos.co.id/
                 </span>
                 <input
@@ -137,14 +137,14 @@ export function LinkEthosSimulator() {
                   placeholder="NamaAcara-2026"
                   value={customSlug}
                   onChange={(e) => setCustomSlug(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded-r-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 font-mono"
+                  className="flex-1 px-3 py-2 bg-[#0B0F17] border border-white/[0.08] rounded-r-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#289CD7] font-mono"
                 />
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 bg-[#289CD7] hover:bg-[#2083B6] text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm border border-[#38BDF8]/30 cursor-pointer"
+              className="w-full py-2.5 bg-gradient-to-r from-[#38BDF8] via-[#289CD7] to-[#0284C7] hover:brightness-110 text-white text-xs font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(40,156,215,0.3)] cursor-pointer"
             >
               <Link2 className="w-3.5 h-3.5" />
               Buat Tautan Resmi
@@ -165,23 +165,23 @@ export function LinkEthosSimulator() {
             <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
               Tautan Aktif &amp; Statistik Klik
             </h4>
-            <span className="text-xs text-slate-500">{links.length} Tautan Terdaftar</span>
+            <span className="text-xs text-slate-400 font-mono">{links.length} Tautan Terdaftar</span>
           </div>
 
           <div className="space-y-2.5 max-h-72 overflow-y-auto">
             {links.map((link) => (
               <div
                 key={link.id}
-                className="p-3 bg-slate-950/60 border border-slate-800 hover:border-slate-700 rounded-xl transition-colors flex flex-wrap items-center justify-between gap-3"
+                className="p-3 bg-[#070A0F]/80 border border-white/[0.08] hover:border-[#289CD7]/40 rounded-xl transition-all flex flex-wrap items-center justify-between gap-3 shadow-sm"
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-blue-400">
+                    <span className="font-mono text-xs font-bold text-[#38BDF8]">
                       link.ethos.co.id/{link.slug}
                     </span>
                     <button
                       onClick={() => handleCopy(link.slug, link.id)}
-                      className="p-1 hover:bg-slate-800 rounded text-slate-400 hover:text-white transition-colors"
+                      className="p-1 hover:bg-[#131D2E] rounded text-slate-400 hover:text-white transition-colors"
                       title="Salin Link"
                     >
                       {copiedId === link.id ? (
@@ -209,11 +209,11 @@ export function LinkEthosSimulator() {
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-2.5 bg-slate-950/80 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400">
+      <div className="px-5 py-2.5 bg-[#070A0F] border-t border-white/[0.08] flex flex-wrap items-center justify-between text-xs text-slate-400">
         <div>
           Keresahan Sebelumnya: Bitly gratis menyisipkan iklan &amp; acesse.one berisiko malware eksternal.
         </div>
-        <div className="text-blue-400 font-medium">
+        <div className="text-[#38BDF8] font-medium">
           Dampak: Peningkatan kepercayaan brand perusahaan di setiap tautan promosi &amp; operasional.
         </div>
       </div>

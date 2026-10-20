@@ -16,15 +16,14 @@ import { Button } from './ui/button';
 
 interface ExecutiveViewProps {
   onStartSlideMode: () => void;
-  onOpenFeedback: () => void;
   onOpenDesignSystem?: () => void;
 }
 
-export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSystem }: ExecutiveViewProps) {
+export function ExecutiveView({ onStartSlideMode, onOpenDesignSystem }: ExecutiveViewProps) {
   return (
     <div className="min-h-screen bg-[#0B0F17] text-slate-100">
       {/* Executive Briefing Hero Section */}
-      <section className="relative pt-10 pb-16 md:pt-16 md:pb-20 border-b border-slate-800/80 bg-grid-subtle">
+      <section className="relative pt-10 pb-16 md:pt-16 md:pb-20 border-b border-white/[0.08] bg-grid-subtle ethos-subtle-glow">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           {/* Metadata Kicker with Design System Indicator */}
           <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono text-slate-400 mb-6">
@@ -42,7 +41,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
           {/* Main Title & Value Proposition */}
           <div className="max-w-4xl space-y-5">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] text-balance">
-              AI-Driven Rapid Prototyping
+              AI-Driven <span className="ethos-gradient-text">Rapid Prototyping</span>
             </h1>
             <p className="text-lg sm:text-2xl text-slate-200 font-normal leading-relaxed text-balance">
               Solusi Cepat Kebutuhan Operasional Departemen Tanpa Membebani Backlog IT
@@ -66,7 +65,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
 
             <a
               href="#portofolio"
-              className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700/70 text-slate-200 hover:text-white text-xs font-medium rounded-lg transition-colors inline-flex items-center gap-1.5"
+              className="px-5 py-2.5 bg-[#131D2E] hover:bg-[#1A263C] border border-white/[0.08] hover:border-[#289CD7]/50 text-slate-200 hover:text-white text-xs font-medium rounded-lg transition-all inline-flex items-center gap-1.5"
             >
               <span>Lihat Bukti Implementasi &amp; Simulator</span>
             </a>
@@ -74,19 +73,12 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
             {onOpenDesignSystem && (
               <button
                 onClick={onOpenDesignSystem}
-                className="px-4 py-2.5 bg-[#289CD7]/10 hover:bg-[#289CD7]/20 border border-[#289CD7]/30 text-[#38BDF8] hover:text-white text-xs font-medium rounded-lg transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2.5 bg-[#289CD7]/15 hover:bg-[#289CD7]/25 border border-[#289CD7]/35 text-[#38BDF8] hover:text-white text-xs font-medium rounded-lg transition-all inline-flex items-center gap-1.5 cursor-pointer shadow-[0_0_12px_rgba(40,156,215,0.15)]"
               >
                 <Layers className="w-3.5 h-3.5" />
                 <span>Showcase Design System</span>
               </button>
             )}
-
-            <button
-              onClick={onOpenFeedback}
-              className="px-4 py-2.5 text-slate-400 hover:text-white text-xs font-mono transition-colors cursor-pointer"
-            >
-              Formulir Evaluasi Juri →
-            </button>
           </div>
 
           {/* Author Byline */}
@@ -98,18 +90,18 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
               {TEAM_INFO.members.map((member, idx) => (
                 <div
                   key={idx}
-                  className="p-4 bg-[#111827]/70 border border-white/[0.06] rounded-xl"
+                  className="p-4 bg-[#0E1522]/85 border border-white/[0.08] hover:border-[#289CD7]/40 rounded-xl transition-all shadow-sm"
                 >
                   <div className="text-[10px] font-mono text-slate-400">Inisiator {idx + 1}</div>
                   <div className="text-sm font-bold text-white mt-0.5">{member.name}</div>
-                  <div className="text-xs text-blue-400 font-mono mt-0.5">{member.role}</div>
+                  <div className="text-xs text-[#38BDF8] font-mono mt-0.5">{member.role}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Executive KPI Strip */}
-          <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] bg-[#0E1420] border border-white/[0.08] rounded-2xl overflow-hidden">
+          {/* Executive KPI Strip ala HM Visualization */}
+          <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl overflow-hidden shadow-xl">
             <div className="p-6">
               <div className="text-xs font-mono text-slate-400">Alokasi Story Points Dev IT</div>
               <div className="text-3xl font-extrabold text-emerald-400 font-mono mt-2 tabular-nums">
@@ -132,7 +124,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
 
             <div className="p-6">
               <div className="text-xs font-mono text-slate-400">Repositori &amp; Micro-Tools</div>
-              <div className="text-3xl font-extrabold text-blue-400 font-mono mt-2 tabular-nums">
+              <div className="text-3xl font-extrabold text-[#38BDF8] font-mono mt-2 tabular-nums">
                 35+ Tools
               </div>
               <div className="text-xs text-slate-400 mt-1">
@@ -157,7 +149,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
       <section id="masalah" className="py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-12">
           <div className="max-w-3xl">
-            <div className="text-xs font-mono uppercase tracking-wider text-blue-400 mb-2">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-2">
               01. Identifikasi Masalah &amp; Analisis Kausal
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
@@ -169,7 +161,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
           </div>
 
           {/* Visualizing the 117 IT Tasks Backlog Queue */}
-          <div className="p-6 bg-[#0E1420] border border-white/[0.08] rounded-2xl">
+          <div className="p-6 bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl shadow-xl">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
@@ -197,7 +189,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
                 title={`Not Started: ${PROBLEM_METRICS.notStarted}`}
               />
               <div
-                className="bg-blue-500 h-full"
+                className="bg-[#289CD7] h-full"
                 style={{ width: `${(PROBLEM_METRICS.inProgress / PROBLEM_METRICS.backlogTotal) * 100}%` }}
                 title={`In Progress: ${PROBLEM_METRICS.inProgress}`}
               />
@@ -205,7 +197,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
 
             {/* Queue breakdown cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/[0.06]">
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-white/[0.06]">
+              <div className="p-3 bg-slate-950/70 rounded-xl border border-white/[0.06]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-400">Kebutuhan On Hold:</span>
                   <span className="font-mono font-bold text-rose-400">{PROBLEM_METRICS.onHold} Kebutuhan</span>
@@ -213,7 +205,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
                 <div className="text-[11px] text-slate-400 mt-1">Tertahan keterbatasan resource pengembang</div>
               </div>
 
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-white/[0.06]">
+              <div className="p-3 bg-slate-950/70 rounded-xl border border-white/[0.06]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-400">Kebutuhan Not Started:</span>
                   <span className="font-mono font-bold text-amber-400">{PROBLEM_METRICS.notStarted} Kebutuhan</span>
@@ -221,10 +213,10 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
                 <div className="text-[11px] text-slate-400 mt-1">Antrean backlog operasional yang belum tersentuh</div>
               </div>
 
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-white/[0.06]">
+              <div className="p-3 bg-slate-950/70 rounded-xl border border-white/[0.06]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-400">Kebutuhan In Progress:</span>
-                  <span className="font-mono font-bold text-blue-400">{PROBLEM_METRICS.inProgress} Kebutuhan</span>
+                  <span className="font-mono font-bold text-[#38BDF8]">{PROBLEM_METRICS.inProgress} Kebutuhan</span>
                 </div>
                 <div className="text-[11px] text-slate-400 mt-1">Sedang dikerjakan untuk Core System &amp; KPI Utama</div>
               </div>
@@ -233,9 +225,9 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
 
           {/* 3 Columns: Core Allocation, Shadow IT Risks, Why BA Must Act */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-[#0E1420] border border-white/[0.08] rounded-2xl flex flex-col justify-between">
+            <div className="p-6 bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl flex flex-col justify-between hover:border-[#289CD7]/35 transition-all shadow-lg">
               <div>
-                <span className="text-[10px] font-mono text-blue-400 uppercase tracking-wider">
+                <span className="text-[10px] font-mono text-[#38BDF8] uppercase tracking-wider">
                   Kapasitas Tim IT
                 </span>
                 <h3 className="text-lg font-bold text-white mt-1 mb-2">
@@ -250,7 +242,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
               </div>
             </div>
 
-            <div className="p-6 bg-[#0E1420] border border-white/[0.08] rounded-2xl flex flex-col justify-between">
+            <div className="p-6 bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl flex flex-col justify-between hover:border-rose-500/35 transition-all shadow-lg">
               <div>
                 <span className="text-[10px] font-mono text-rose-400 uppercase tracking-wider">
                   Keresahan Manajemen
@@ -263,7 +255,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
                 </p>
                 <div className="space-y-2">
                   {PROBLEM_METRICS.shadowItRisks.map((risk, rIdx) => (
-                    <div key={rIdx} className="p-2 bg-slate-950/70 rounded-lg text-xs">
+                    <div key={rIdx} className="p-2.5 bg-slate-950/80 rounded-lg text-xs border border-white/[0.04]">
                       <div className="flex items-center justify-between font-semibold text-white">
                         <span>{risk.title}</span>
                         <span className="font-mono text-[10px] text-rose-400">{risk.severity}</span>
@@ -278,7 +270,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
               </div>
             </div>
 
-            <div className="p-6 bg-[#0E1420] border border-white/[0.08] rounded-2xl flex flex-col justify-between">
+            <div className="p-6 bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl flex flex-col justify-between hover:border-emerald-500/35 transition-all shadow-lg">
               <div>
                 <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">
                   Kebuntuan Konvensional
@@ -329,7 +321,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
           {/* Flow Comparison Architecture */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* The Old Bottleneck */}
-            <div className="p-6 bg-[#0E1420] border border-white/[0.08] rounded-2xl space-y-4">
+            <div className="p-6 bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl space-y-4 shadow-xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                 <span className="text-xs font-mono font-bold text-rose-400 uppercase">
                   Metode Konvensional (Sebelumnya)
@@ -363,7 +355,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
             </div>
 
             {/* The New AI-Driven Framework */}
-            <div className="p-6 bg-[#0E1420] border border-blue-500/40 rounded-2xl space-y-4 shadow-xl">
+            <div className="p-6 bg-[#0E1522]/90 border border-[#289CD7]/50 backdrop-blur-md rounded-2xl space-y-4 shadow-xl shadow-[#289CD7]/10">
               <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                 <span className="text-xs font-mono font-bold text-emerald-400 uppercase">
                   Metode Baru (AI-Driven Prototyping)
@@ -374,19 +366,19 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
                 Eksekusi Langsung Mandiri oleh Business Analyst
               </h3>
               <div className="space-y-3 text-xs text-slate-200">
-                <div className="p-3 bg-slate-950 rounded-xl border border-blue-900/40 flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">1</span>
+                <div className="p-3 bg-slate-950 rounded-xl border border-[#289CD7]/30 flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-lg bg-[#289CD7] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">1</span>
                   <span>BA mengidentifikasi langsung kendala proses bisnis di lapangan (Tax, HC, Operasional)</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-blue-900/40 flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">2</span>
+                <div className="p-3 bg-slate-950 rounded-xl border border-[#289CD7]/30 flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-lg bg-[#289CD7] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">2</span>
                   <span>BA merancang arsitektur &amp; logika solusi dengan bantuan AI Agentic Coding</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-blue-900/40 flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">3</span>
+                <div className="p-3 bg-slate-950 rounded-xl border border-[#289CD7]/30 flex items-center gap-3">
+                  <span className="w-6 h-6 rounded-lg bg-[#289CD7] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">3</span>
                   <span>Solusi fungsional dihasilkan dalam hitungan jam / hari kerja</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-blue-900/40 flex items-center gap-3">
+                <div className="p-3 bg-slate-950 rounded-xl border border-emerald-500/40 flex items-center gap-3">
                   <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-xs shrink-0">4</span>
                   <span>Ditempatkan pada server terisolasi yang aman dengan 0 gangguan ke developer Core IT</span>
                 </div>
@@ -403,7 +395,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
       <section id="portofolio" className="py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-12">
           <div className="max-w-3xl">
-            <div className="text-xs font-mono uppercase tracking-wider text-blue-400 mb-2">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-2">
               03. Portofolio Sistem yang Telah Dibangun &amp; Evidence
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
@@ -441,7 +433,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
       <section id="rencana" className="py-20 border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 space-y-12">
           <div className="max-w-3xl">
-            <div className="text-xs font-mono uppercase tracking-wider text-blue-400 mb-2">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-2">
               05. Pembelajaran Nyata &amp; Rencana Strategis
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
@@ -457,9 +449,9 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
       </section>
 
       {/* Presentation Deck Launcher Section */}
-      <section className="py-20 bg-[#0E1420] border-b border-white/[0.08]">
+      <section className="py-20 bg-[#0E1522]/90 border-b border-white/[0.08] backdrop-blur-md">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-800/40 text-xs font-mono text-blue-300">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#289CD7]/15 border border-[#289CD7]/35 text-xs font-mono text-[#38BDF8]">
             Stand Up for Improvement Batch 5 · Pitch Deck Mode
           </div>
 
@@ -474,17 +466,10 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={onStartSlideMode}
-              className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 active:scale-[0.98] text-white font-semibold text-xs rounded-xl transition-all shadow-md shadow-blue-950 flex items-center gap-2"
+              className="px-6 py-3.5 bg-gradient-to-r from-[#38BDF8] via-[#289CD7] to-[#0284C7] hover:from-[#289CD7] hover:to-[#0369A1] active:scale-[0.98] text-white font-semibold text-xs rounded-xl transition-all shadow-md shadow-[#289CD7]/25 hover:shadow-[0_0_24px_rgba(40,156,215,0.45)] flex items-center gap-2 cursor-pointer"
             >
               <Presentation className="w-4 h-4" />
               <span>Mulai Mode Slide Presentasi</span>
-            </button>
-
-            <button
-              onClick={onOpenFeedback}
-              className="px-6 py-3.5 bg-[#121A2A] hover:bg-[#162238] border border-white/10 text-slate-200 hover:text-white rounded-xl text-xs font-medium transition-colors"
-            >
-              Beri Evaluasi / Nilai Juri
             </button>
           </div>
         </div>
@@ -499,7 +484,7 @@ export function ExecutiveView({ onStartSlideMode, onOpenFeedback, onOpenDesignSy
           <div className="flex items-center gap-4 font-mono text-[11px] text-slate-400">
             <span>Stand Up for Improvement Batch 5</span>
             <span className="text-slate-700">·</span>
-            <span className="text-blue-400 font-medium">AI-Driven Rapid Prototyping</span>
+            <span className="text-[#38BDF8] font-medium">AI-Driven Rapid Prototyping</span>
           </div>
         </div>
       </footer>

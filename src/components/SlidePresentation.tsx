@@ -11,10 +11,13 @@ import {
   ArrowRight, Star, CheckCircle2, ShieldCheck, Zap
 } from 'lucide-react';
 import { SprintImprovementLogo, SprintImprovementIcon, LinkEthosLogo, LinkEthosIcon } from './logo';
+import { ThemeToggle } from './ThemeToggle';
 
 interface SlidePresentationProps {
   onExit: () => void;
   initialSlide?: number;
+  theme?: 'light' | 'dark';
+  onToggleTheme?: () => void;
 }
 
 const slideVariants = {
@@ -43,7 +46,12 @@ const slideVariants = {
   }),
 };
 
-export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentationProps) {
+export function SlidePresentation({
+  onExit,
+  initialSlide = 1,
+  theme = 'dark',
+  onToggleTheme
+}: SlidePresentationProps) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(initialSlide - 1);
   const [direction, setDirection] = useState<number>(0);
   const [showNotes, setShowNotes] = useState<boolean>(false);
@@ -57,7 +65,57 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
   const containerRef = useRef<HTMLDivElement>(null);
   const currentSlide = SLIDES_CONFIG[currentSlideIndex];
 
+  // Inactivity auto-hide for controls & cursor (Keynote / Cinema mode)
+  // Rule: Controls ALWAYS stay hidden unless the mouse cursor actually moves!
+  const [isControlsVisible, setIsControlsVisible] = useState<boolean>(true);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHoveringControlsRef = useRef<boolean>(false);
+  const lastMousePos = useRef<{ x: number; y: number }>({ x: -1, y: -1 });
+
+  const resetHideTimer = () => {
+    setIsControlsVisible(true);
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+    }
+    if (!showNotes && !showThumbnails && !isHoveringControlsRef.current) {
+      hideTimerRef.current = setTimeout(() => {
+        setIsControlsVisible(false);
+      }, 2500);
+    }
+  };
+
+  useEffect(() => {
+    // Initial auto-hide timer on mount
+    resetHideTimer();
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Ignore initial dummy event or if position hasn't actually moved
+      if (lastMousePos.current.x === -1) {
+        lastMousePos.current = { x: e.clientX, y: e.clientY };
+        return;
+      }
+      const dx = Math.abs(e.clientX - lastMousePos.current.x);
+      const dy = Math.abs(e.clientY - lastMousePos.current.y);
+
+      // Only wake up controls if cursor genuinely moved more than 2 pixels
+      if (dx > 2 || dy > 2) {
+        lastMousePos.current = { x: e.clientX, y: e.clientY };
+        resetHideTimer();
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+      }
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [showNotes, showThumbnails]);
+
   const goToNext = () => {
+    // Navigation via keyboard/click does NOT unhide toolbar; controls stay hidden unless cursor moves
     if (currentSlideIndex < SLIDES_CONFIG.length - 1) {
       setDirection(1);
       setCurrentSlideIndex(prev => prev + 1);
@@ -87,7 +145,7 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
     return () => clearInterval(interval);
   }, [isTimerRunning]);
 
-  // Keyboard navigation listener
+  // Keyboard navigation listener (does NOT force toolbar visible)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
@@ -98,8 +156,10 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
         goToPrev();
       } else if (e.key === 'n' || e.key === 'N') {
         setShowNotes(prev => !prev);
+        resetHideTimer();
       } else if (e.key === 'g' || e.key === 'G') {
         setShowThumbnails(prev => !prev);
+        resetHideTimer();
       } else if (e.key === 'Escape') {
         if (showThumbnails) setShowThumbnails(false);
         else if (showNotes) setShowNotes(false);
@@ -111,6 +171,7 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
   }, [showThumbnails, showNotes, currentSlideIndex]);
 
   const toggleFullscreen = () => {
+    resetHideTimer();
     if (!document.fullscreenElement) {
       containerRef.current?.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     } else {
@@ -127,10 +188,26 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 bg-[#070A0F] text-slate-100 flex flex-col select-none overflow-hidden h-screen w-screen"
+      className={`fixed inset-0 z-50 bg-[#070A0F] text-slate-100 flex flex-col select-none overflow-hidden h-screen w-screen transition-all ${
+        !isControlsVisible ? 'cursor-none' : 'cursor-default'
+      }`}
     >
-      {/* Sleek Top Presentation Toolbar */}
-      <div className="h-14 px-6 bg-[#0E1420]/95 backdrop-blur-md border-b border-slate-800 flex items-center justify-between shrink-0 z-30">
+      {/* Sleek Top Presentation Toolbar with Auto-Hide transition */}
+      <div
+        onMouseEnter={() => {
+          isHoveringControlsRef.current = true;
+          resetHideTimer();
+        }}
+        onMouseLeave={() => {
+          isHoveringControlsRef.current = false;
+          resetHideTimer();
+        }}
+        className={`px-6 bg-[#0E1420]/95 backdrop-blur-md flex items-center justify-between shrink-0 z-30 transition-all duration-300 transform ${
+          isControlsVisible
+            ? 'h-14 opacity-100 translate-y-0 border-b border-slate-800'
+            : 'h-0 py-0 opacity-0 -translate-y-full pointer-events-none border-b-0 overflow-hidden'
+        }`}
+      >
         <div className="flex items-center gap-3">
           <button
             onClick={onExit}
@@ -211,6 +288,11 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           </button>
+
+          {/* Theme Toggle in Slide Mode */}
+          {onToggleTheme && (
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} showLabel={false} />
+          )}
         </div>
       </div>
 
@@ -273,8 +355,8 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
                 </div>
 
                 {/* Keyboard Navigation Quick Hint */}
-                <div className="inline-flex items-center gap-2 text-[11px] font-mono text-slate-500 pt-2">
-                  <span>Gunakan tombol <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Right Arrow →</kbd> atau <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Space</kbd> untuk berpindah slide</span>
+                <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-300 dark:text-slate-400 pt-2">
+                  <span>Gunakan tombol <kbd className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-[#162238] text-[#38BDF8] border border-[#289CD7]/40 shadow-xs inline-flex items-center mx-1">Right Arrow →</kbd> atau <kbd className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-[#162238] text-[#38BDF8] border border-[#289CD7]/40 shadow-xs inline-flex items-center mx-1">Space</kbd> untuk berpindah slide</span>
                 </div>
               </div>
             )}
@@ -321,54 +403,149 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
               </div>
             )}
 
-            {/* SLIDE 3: Analisis Akar Masalah (Ishikawa Diagram) */}
+            {/* SLIDE 3: Analisis Akar Masalah (Ishikawa Fishbone Framework) */}
             {currentSlideIndex === 2 && (
-              <div className="space-y-3">
-                <div className="border-b border-white/[0.08] pb-2">
-                  <div className="text-xs font-mono text-blue-400">Slide 03 · Root Cause Analysis</div>
-                  <h2 className="text-xl font-bold text-white">Analisis Akar Masalah (Diagram Sebab-Akibat)</h2>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <span className="text-xs font-mono text-blue-400 font-bold block mb-1">1. Manusia (People)</span>
-                    <ul className="text-xs text-slate-300 space-y-1">
-                      <li>• Kapasitas developer IT 100% terikat Core System &amp; KPI Utama</li>
-                      <li>• Keterbatasan programmer untuk tugas mikro harian</li>
-                      <li>• Business Analyst sebelumnya pasif hanya menulis dokumen FRD</li>
-                    </ul>
+              <div className="space-y-3 w-full">
+                <div className="border-b border-white/[0.08] pb-2 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-mono text-[#38BDF8]">Slide 03 · Root Cause Analysis</div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      Analisis Akar Masalah (Diagram Tulang Ikan / Ishikawa)
+                    </h2>
                   </div>
-
-                  <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <span className="text-xs font-mono text-blue-400 font-bold block mb-1">2. Metode (Process)</span>
-                    <ul className="text-xs text-slate-300 space-y-1">
-                      <li>• SDLC konvensional panjang (BRD → Antre IT → Koding Nol → Prod)</li>
-                      <li>• Birokrasi antrean tiket memakan waktu 1–3 bulan</li>
-                      <li>• Ketiadaan jalur cepat (fast-track) untuk micro-tools</li>
-                    </ul>
-                  </div>
-
-                  <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <span className="text-xs font-mono text-amber-400 font-bold block mb-1">3. Lingkungan (Environment)</span>
-                    <ul className="text-xs text-slate-300 space-y-1">
-                      <li>• Fokus IT ke Core System &amp; KPI utama korporasi</li>
-                      <li>• Kebutuhan mikro departemen selalu kalah prioritas</li>
-                      <li>• Departemen berinisiatif sendiri mencari tools luar (Shadow IT)</li>
-                    </ul>
-                  </div>
-
-                  <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl">
-                    <span className="text-xs font-mono text-rose-400 font-bold block mb-1">4. Teknologi &amp; Keamanan</span>
-                    <ul className="text-xs text-slate-300 space-y-1">
-                      <li>• Ketergantungan pada converter / shortlink gratisan beriklan</li>
-                      <li>• Potensi data leak Bupot, Faktur Pajak, dan Payroll</li>
-                      <li>• Belum tersedianya alokasi subdomain resmi terpusat</li>
-                    </ul>
+                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#289CD7]/15 border border-[#289CD7]/35 text-[11px] font-mono text-[#38BDF8]">
+                    <span>4 Dimensi Penyebab</span>
                   </div>
                 </div>
 
-                <div className="p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-xl text-xs text-rose-300 text-center font-mono">
-                  Muara Masalah Utama: Backlog IT Menumpuk 1–3 Bulan &amp; Keresahan VP IT atas Tools Luar
+                {/* Fishbone 12-col Engineering Canvas */}
+                <div className="grid grid-cols-12 gap-3.5 items-center">
+                  {/* Causal Ribs & Central Spine (8 columns) */}
+                  <div className="col-span-12 lg:col-span-8 flex flex-col justify-between space-y-2">
+                    {/* Top Ribs: Manusia & Metode */}
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl hover:border-[#289CD7]/40 transition-all">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-xs font-mono font-bold text-[#38BDF8]">
+                            1. Manusia (People)
+                          </span>
+                        </div>
+                        <ul className="text-[11px] sm:text-xs text-slate-300 space-y-1">
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>Kapasitas developer IT 100% terikat Core System &amp; KPI</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>Keterbatasan programmer untuk mengurusi tools mikro</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>BA sebelumnya pasif hanya menulis dokumen FRD</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl hover:border-[#289CD7]/40 transition-all">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-xs font-mono font-bold text-[#38BDF8]">
+                            2. Metode (Process)
+                          </span>
+                        </div>
+                        <ul className="text-[11px] sm:text-xs text-slate-300 space-y-1">
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>SDLC konvensional panjang (BRD → Antre IT → Prod)</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>Birokrasi antrean tiket memakan waktu 1–3 bulan</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-[#38BDF8] font-mono">↳</span>
+                            <span>Ketiadaan jalur ekspres mikro-tools operasional</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Central Fishbone Spine */}
+                    <div className="flex items-center gap-2 py-0.5">
+                      <div className="h-1.5 w-full bg-gradient-to-r from-slate-700 via-[#289CD7] to-[#38BDF8] rounded-full shadow-[0_0_10px_rgba(40,156,215,0.35)]" />
+                      <ArrowRight className="w-5 h-5 text-[#38BDF8] shrink-0 animate-pulse" />
+                    </div>
+
+                    {/* Bottom Ribs: Lingkungan & Teknologi */}
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl hover:border-amber-500/40 transition-all">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-xs font-mono font-bold text-amber-400">
+                            3. Lingkungan (Environment)
+                          </span>
+                        </div>
+                        <ul className="text-[11px] sm:text-xs text-slate-300 space-y-1">
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-amber-400 font-mono">↳</span>
+                            <span>Fokus IT mutlak ke Core System &amp; target KPI IT</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-amber-400 font-mono">↳</span>
+                            <span>Kebutuhan mikro departemen selalu kalah prioritas</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-amber-400 font-mono">↳</span>
+                            <span>Departemen berinisiatif cari alternatif (Shadow IT)</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="p-3 bg-[#0E1420] border border-white/[0.08] rounded-xl hover:border-rose-500/40 transition-all">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-xs font-mono font-bold text-rose-400">
+                            4. Teknologi &amp; Keamanan
+                          </span>
+                        </div>
+                        <ul className="text-[11px] sm:text-xs text-slate-300 space-y-1">
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-rose-400 font-mono">↳</span>
+                            <span>Ketergantungan shortlink gratisan beriklan (Bitly)</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-rose-400 font-mono">↳</span>
+                            <span>Potensi kebocoran data Bupot, Faktur Pajak &amp; Payroll</span>
+                          </li>
+                          <li className="flex items-start gap-1.5">
+                            <span className="text-rose-400 font-mono">↳</span>
+                            <span>Domain asing tidak aman tanpa alokasi resmi</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Muara Masalah (Head of Ishikawa Fishbone - 4 columns) */}
+                  <div className="col-span-12 lg:col-span-4 h-full flex flex-col justify-center">
+                    <div className="muara-masalah-card p-4 sm:p-5 rounded-2xl border-2 border-rose-500/60 shadow-xl flex flex-col justify-between space-y-3">
+                      <div>
+                        <div className="muara-badge inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider mb-2">
+                          <span>Muara Masalah (Problem Effect)</span>
+                        </div>
+                        <h4 className="muara-title text-sm sm:text-base font-extrabold text-white leading-snug">
+                          Backlog IT Menumpuk 1–3 Bulan &amp; Keresahan VP IT atas Tools Luar
+                        </h4>
+                        <p className="muara-desc text-xs text-rose-100/90 mt-2 leading-relaxed">
+                          Antrean SDLC konvensional yang panjang membuat tools mikro departemen tidak tertangani, memicu meluasnya pemakaian Shadow IT berisiko kebocoran data dan menurunkan citra profesional perusahaan.
+                        </p>
+                      </div>
+
+                      <div className="pt-2.5 border-t border-rose-500/30 flex items-center justify-between text-xs font-mono">
+                        <span className="text-slate-300 muara-sol-label font-semibold">Solusi Teruji:</span>
+                        <span className="muara-solution-pill font-mono font-extrabold text-xs px-3 py-1 rounded-md shadow-sm">
+                          AI Rapid Prototyping
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -887,8 +1064,22 @@ export function SlidePresentation({ onExit, initialSlide = 1 }: SlidePresentatio
         </div>
       )}
 
-      {/* Bottom Navigation Toolbar */}
-      <div className="h-14 px-6 bg-[#0E1420]/95 backdrop-blur-md border-t border-slate-800 flex items-center justify-between shrink-0 z-30">
+      {/* Bottom Navigation Toolbar with Auto-Hide transition */}
+      <div
+        onMouseEnter={() => {
+          isHoveringControlsRef.current = true;
+          resetHideTimer();
+        }}
+        onMouseLeave={() => {
+          isHoveringControlsRef.current = false;
+          resetHideTimer();
+        }}
+        className={`px-6 bg-[#0E1420]/95 backdrop-blur-md flex items-center justify-between shrink-0 z-30 transition-all duration-300 transform ${
+          isControlsVisible
+            ? 'h-14 opacity-100 translate-y-0 border-t border-slate-800'
+            : 'h-0 py-0 opacity-0 translate-y-full pointer-events-none border-t-0 overflow-hidden'
+        }`}
+      >
         <button
           onClick={goToPrev}
           disabled={currentSlideIndex === 0}

@@ -36,11 +36,11 @@ export function MeethosSimulator() {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+    <div className="bg-[#0E1522] border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl">
       {/* Top Header */}
-      <div className="px-5 py-3 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-5 py-3 bg-[#070A0F] border-b border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <Building2 className="w-4 h-4 text-indigo-400" />
+          <Building2 className="w-4 h-4 text-[#38BDF8]" />
           <span className="text-sm font-semibold text-white">
             Meethos Admin Panel · booking.ethos.co.id
           </span>
@@ -51,12 +51,12 @@ export function MeethosSimulator() {
 
         <div className="flex items-center gap-2 text-xs">
           <span className="text-slate-400">Periode:</span>
-          <span className="px-2 py-0.5 bg-slate-800 text-white rounded font-mono">Tahun Ini (2026)</span>
+          <span className="px-2 py-0.5 bg-[#131D2E] text-[#38BDF8] border border-white/[0.08] rounded font-mono">Tahun Ini (2026)</span>
         </div>
       </div>
 
       {/* 4 Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-800 bg-slate-950/70 border-b border-slate-800">
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/[0.08] bg-[#0B0F17]/70 border-b border-white/[0.08]">
         <div className="p-4">
           <div className="text-xs text-slate-400">Total Reservasi</div>
           <div className="text-2xl font-bold text-white font-mono mt-1">203</div>
@@ -65,7 +65,7 @@ export function MeethosSimulator() {
 
         <div className="p-4">
           <div className="text-xs text-slate-400">Total Jam Rapat</div>
-          <div className="text-2xl font-bold text-blue-400 font-mono mt-1">672 <span className="text-xs font-normal text-slate-400">jam</span></div>
+          <div className="text-2xl font-bold text-[#38BDF8] font-mono mt-1">672 <span className="text-xs font-normal text-slate-400">jam</span></div>
           <div className="text-xs text-slate-500 mt-0.5">Rata-rata durasi: 4.2 jam/rapat</div>
         </div>
 
@@ -85,7 +85,7 @@ export function MeethosSimulator() {
       {/* Two columns: Division distribution & Room Occupancy */}
       <div className="p-5 grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left: Division Distribution */}
-        <div className="lg:col-span-6 bg-slate-950/50 border border-slate-800 p-4 rounded-xl">
+        <div className="lg:col-span-6 bg-[#070A0F]/80 border border-white/[0.08] p-4 rounded-xl shadow-inner">
           <div className="flex items-center justify-between mb-3">
             <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
               Distribusi Pemakaian per Divisi
@@ -98,16 +98,16 @@ export function MeethosSimulator() {
               <div key={i} className="space-y-1">
                 <div className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2 text-slate-200">
-                    <span className="font-mono text-slate-400 font-bold text-[11px]">{div.rank}</span>
+                    <span className="font-mono text-[#38BDF8] font-bold text-[11px]">{div.rank}</span>
                     <span className="truncate max-w-[220px] sm:max-w-xs">{div.name}</span>
                   </div>
                   <div className="font-mono text-right text-slate-400">
-                    <span className="text-white font-medium">{div.sessions} sesi</span> ({div.hours} jam) · <span className="text-blue-400 font-semibold">{div.share}</span>
+                    <span className="text-white font-medium">{div.sessions} sesi</span> ({div.hours} jam) · <span className="text-[#38BDF8] font-semibold">{div.share}</span>
                   </div>
                 </div>
-                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-[#131D2E] h-1.5 rounded-full overflow-hidden">
                   <div
-                    className="bg-blue-500 h-full rounded-full"
+                    className="bg-gradient-to-r from-[#289CD7] to-[#38BDF8] h-full rounded-full"
                     style={{ width: `${parseFloat(div.share) * 5}%` }}
                   />
                 </div>
@@ -117,7 +117,7 @@ export function MeethosSimulator() {
         </div>
 
         {/* Right: Room Occupancy & Quick Booking */}
-        <div className="lg:col-span-6 bg-slate-950/50 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+        <div className="lg:col-span-6 bg-[#070A0F]/80 border border-white/[0.08] p-4 rounded-xl flex flex-col justify-between shadow-inner">
           <div>
             <div className="flex items-center justify-between mb-3">
               <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
@@ -133,8 +133,8 @@ export function MeethosSimulator() {
                   onClick={() => setSelectedRoom(room.name)}
                   className={`p-2.5 rounded-lg border transition-all cursor-pointer ${
                     selectedRoom === room.name
-                      ? 'bg-slate-800/80 border-blue-500/50 ring-1 ring-blue-500/30'
-                      : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                      ? 'bg-[#131D2E] border-[#289CD7] ring-1 ring-[#289CD7]/40'
+                      : 'bg-[#0E1522] border-white/[0.06] hover:border-white/[0.15]'
                   }`}
                 >
                   <div className="flex items-center justify-between text-xs mb-1">
@@ -148,14 +148,14 @@ export function MeethosSimulator() {
                     </div>
                   </div>
 
-                  <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden mb-1.5">
+                  <div className="w-full bg-[#070A0F] h-1.5 rounded-full overflow-hidden mb-1.5">
                     <div
                       className={`h-full rounded-full ${
                         room.occupancyPercent >= 90
                           ? 'bg-amber-500'
                           : room.occupancyPercent >= 60
                           ? 'bg-emerald-500'
-                          : 'bg-blue-500'
+                          : 'bg-[#289CD7]'
                       }`}
                       style={{ width: `${room.occupancyPercent}%` }}
                     />
@@ -169,7 +169,7 @@ export function MeethosSimulator() {
                           ? 'text-emerald-400'
                           : room.currentStatus === 'Sedang Digunakan'
                           ? 'text-amber-400'
-                          : 'text-blue-400'
+                          : 'text-[#38BDF8]'
                       }
                     >
                       {room.currentStatus}
@@ -189,7 +189,7 @@ export function MeethosSimulator() {
             ) : (
               <button
                 onClick={() => handleQuickBook(selectedRoom)}
-                className="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-1.5"
+                className="w-full py-2 bg-gradient-to-r from-[#38BDF8] via-[#289CD7] to-[#0284C7] hover:brightness-110 text-white text-xs font-medium rounded-lg transition-all shadow-[0_0_15px_rgba(40,156,215,0.3)] flex items-center justify-center gap-1.5"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 Simulasikan Reservasi Cepat: {selectedRoom}
@@ -200,11 +200,11 @@ export function MeethosSimulator() {
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-2.5 bg-slate-950/80 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400">
+      <div className="px-5 py-2.5 bg-[#070A0F] border-t border-white/[0.08] flex flex-wrap items-center justify-between text-xs text-slate-400">
         <div>
           Sebelumnya: Jadwal ruang rapat sering bentrok &amp; koordinasi manual melalui chat menyita waktu.
         </div>
-        <div className="text-indigo-400 font-medium">
+        <div className="text-[#38BDF8] font-medium">
           Solusi: Sistem mandiri booking.ethos.co.id selesai dalam 3 hari kerja oleh BA.
         </div>
       </div>

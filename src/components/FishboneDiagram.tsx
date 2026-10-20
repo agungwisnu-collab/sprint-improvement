@@ -6,11 +6,11 @@ export function FishboneDiagram() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-[#0E1420] border border-white/[0.08] rounded-2xl p-6 lg:p-8 shadow-xl">
+    <div className="bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl p-6 lg:p-8 shadow-xl">
       {/* Header */}
       <div className="flex flex-wrap items-end justify-between gap-4 mb-8 pb-4 border-b border-white/[0.08]">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
+          <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-1">
             Ishikawa Engineering Framework
           </div>
           <h3 className="text-xl font-bold text-white tracking-tight">
@@ -42,15 +42,15 @@ export function FishboneDiagram() {
                     onClick={() => setActiveCategoryIndex(isActive ? null : idx)}
                     className={`p-4 rounded-xl border transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-[#289CD7]/15 border-[#289CD7] shadow-md ring-1 ring-[#289CD7]/40'
-                        : 'bg-[#121A2A]/90 border-slate-800 hover:border-slate-700'
+                        ? 'bg-[#289CD7]/15 border-[#289CD7] shadow-[0_0_20px_rgba(40,156,215,0.25)] ring-1 ring-[#289CD7]/50'
+                        : 'bg-[#131D2E]/85 border border-white/[0.08] hover:border-[#289CD7]/40 shadow-sm'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-mono font-bold text-[#38BDF8]">
                         {item.category}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-500">
+                      <span className="text-[10px] font-mono text-slate-400">
                         {item.causes.length} Faktor
                       </span>
                     </div>
@@ -58,7 +58,7 @@ export function FishboneDiagram() {
                     <ul className="space-y-1.5 text-xs text-slate-300">
                       {item.causes.map((cause, cIdx) => (
                         <li key={cIdx} className="flex items-start gap-2 leading-relaxed">
-                          <span className="text-blue-400 font-mono text-[10px] mt-0.5">↳</span>
+                          <span className="text-[#38BDF8] font-mono text-[10px] mt-0.5">↳</span>
                           <span>{cause}</span>
                         </li>
                       ))}
@@ -70,8 +70,8 @@ export function FishboneDiagram() {
 
             {/* Central Horizontal Spine (Engineering Axis) */}
             <div className="relative my-4 flex items-center justify-between">
-              <div className="w-full h-1 bg-gradient-to-r from-slate-700 via-blue-500/80 to-slate-400 rounded-full" />
-              <ArrowRight className="w-6 h-6 text-slate-300 shrink-0 ml-1" />
+              <div className="w-full h-1.5 bg-gradient-to-r from-slate-700 via-[#289CD7] to-[#38BDF8] rounded-full shadow-[0_0_12px_rgba(40,156,215,0.3)]" />
+              <ArrowRight className="w-6 h-6 text-[#38BDF8] shrink-0 ml-1.5" />
             </div>
 
             {/* Bottom Ribs (Category 3: Prioritas & Lingkungan, Category 4: Teknologi & Keamanan) */}
@@ -85,15 +85,15 @@ export function FishboneDiagram() {
                     onClick={() => setActiveCategoryIndex(isActive ? null : actualIndex)}
                     className={`p-4 rounded-xl border transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-amber-950/30 border-amber-500 shadow-md ring-1 ring-amber-500/30'
-                        : 'bg-[#121A2A]/90 border-white/[0.08] hover:border-slate-600'
+                        ? 'bg-amber-950/30 border-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/50'
+                        : 'bg-[#131D2E]/85 border border-white/[0.08] hover:border-amber-500/40 shadow-sm'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-mono font-bold text-amber-400">
                         {item.category}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-500">
+                      <span className="text-[10px] font-mono text-slate-400">
                         {item.causes.length} Faktor
                       </span>
                     </div>
@@ -114,7 +114,7 @@ export function FishboneDiagram() {
 
           {/* Spine Head / The Problem Effect (4 cols) */}
           <div className="col-span-4 pl-4">
-            <div className="p-6 bg-[#16131B] border border-rose-900/60 rounded-2xl relative shadow-lg">
+            <div className="p-6 bg-[#181119] border border-rose-800/60 rounded-2xl relative shadow-xl">
               <div className="text-[10px] font-mono uppercase tracking-wider text-rose-400 font-bold mb-2">
                 Masalah Utama (Problem Statement)
               </div>
@@ -136,7 +136,7 @@ export function FishboneDiagram() {
 
       {/* Active Diagnostic Detail Bar */}
       {activeCategoryIndex !== null && (
-        <div className="mt-4 p-4 bg-[#111724] border border-blue-500/30 rounded-xl text-xs flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-4 p-4 bg-[#111A29] border border-[#289CD7]/40 rounded-xl text-xs flex flex-wrap items-center justify-between gap-4 shadow-md">
           <div>
             <span className="font-semibold text-white">
               Fokus Dimensi {FISHBONE_DATA[activeCategoryIndex].category}:
@@ -147,7 +147,7 @@ export function FishboneDiagram() {
           </div>
           <button
             onClick={() => setActiveCategoryIndex(null)}
-            className="text-xs text-slate-400 hover:text-white underline font-mono shrink-0"
+            className="text-xs text-[#38BDF8] hover:underline font-mono shrink-0 cursor-pointer"
           >
             Reset Pilihan
           </button>

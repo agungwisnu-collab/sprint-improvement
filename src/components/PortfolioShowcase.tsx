@@ -31,8 +31,8 @@ export function PortfolioShowcase() {
             onClick={() => setActiveTab(project.id)}
             className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === project.id
-                ? 'bg-[#289CD7] text-white shadow-sm font-bold border border-[#38BDF8]/30'
-                : 'bg-[#0E1420] text-slate-300 hover:text-white hover:bg-[#141C2C] border border-slate-800'
+                ? 'bg-[#289CD7] text-white shadow-md shadow-[#289CD7]/25 font-bold border border-[#38BDF8]/40'
+                : 'bg-[#0E1522]/90 text-slate-300 hover:text-white hover:bg-[#131D2E] border border-white/[0.08]'
             }`}
           >
             <span>{project.name.split(' (')[0]}</span>
@@ -44,8 +44,8 @@ export function PortfolioShowcase() {
           onClick={() => setActiveTab('catalog')}
           className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition-all flex items-center gap-2 cursor-pointer ${
             activeTab === 'catalog'
-              ? 'bg-slate-200 text-slate-950 font-bold shadow-sm'
-              : 'bg-[#0E1420] text-slate-300 hover:text-white hover:bg-[#141C2C] border border-slate-800'
+              ? 'bg-slate-100 text-slate-950 font-bold shadow-md'
+              : 'bg-[#0E1522]/90 text-slate-300 hover:text-white hover:bg-[#131D2E] border border-white/[0.08]'
           }`}
         >
           <FolderGit2 className="w-3.5 h-3.5" />
@@ -60,7 +60,7 @@ export function PortfolioShowcase() {
       {activeTab !== 'catalog' && activeProject ? (
         <div className="space-y-6">
           {/* Project Summary Banner */}
-          <div className="bg-[#0E1420] border border-slate-800 rounded-2xl p-6 lg:p-8">
+          <div className="bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl p-6 lg:p-8 shadow-xl hover:border-[#289CD7]/30 transition-all">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
               <div>
                 <div className="text-xs font-mono text-[#38BDF8] mb-1">
@@ -84,7 +84,7 @@ export function PortfolioShowcase() {
 
             {/* Business Need vs Solution Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/[0.06]">
-              <div className="p-4 bg-slate-950/60 rounded-xl border border-white/[0.06]">
+              <div className="p-4 bg-slate-950/70 rounded-xl border border-white/[0.06]">
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block mb-1">
                   Tantangan Operasional / Business Need:
                 </span>
@@ -93,14 +93,14 @@ export function PortfolioShowcase() {
                 </p>
               </div>
 
-              <div className="p-4 bg-slate-950/60 rounded-xl border border-white/[0.06]">
+              <div className="p-4 bg-slate-950/70 rounded-xl border border-white/[0.06]">
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 block mb-1">
                   Fitur Unggulan Sistem:
                 </span>
                 <ul className="text-xs text-slate-300 space-y-1.5">
                   {activeProject.keyFeatures.map((feat, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8] shrink-0 mt-0.5" />
                       <span className="leading-snug">{feat}</span>
                     </li>
                   ))}
@@ -111,7 +111,7 @@ export function PortfolioShowcase() {
             {/* Impact Metrics Row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 pt-4 border-t border-white/[0.06]">
               {activeProject.impactMetrics.map((metric, mIdx) => (
-                <div key={mIdx} className="p-3 bg-slate-950 rounded-xl border border-white/[0.06]">
+                <div key={mIdx} className="p-3.5 bg-slate-950/80 rounded-xl border border-white/[0.06] hover:border-[#289CD7]/30 transition-all">
                   <div className="text-[11px] text-slate-400 font-mono">{metric.label}</div>
                   <div className="text-base font-bold text-white font-mono mt-1 tabular-nums">
                     {metric.value}
@@ -125,7 +125,7 @@ export function PortfolioShowcase() {
           <div>
             <div className="flex items-center justify-between mb-3 px-1">
               <span className="text-xs uppercase font-mono tracking-wider text-slate-400 flex items-center gap-2">
-                <Terminal className="w-3.5 h-3.5 text-blue-400" />
+                <Terminal className="w-3.5 h-3.5 text-[#38BDF8]" />
                 Live Working Simulator / Production Preview
               </span>
               <span className="text-xs text-slate-400 font-mono">

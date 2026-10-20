@@ -3,14 +3,19 @@ import { Presentation, MessageSquare, Layers } from 'lucide-react';
 import { SprintImprovementLogo } from './logo';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   onStartSlideMode: () => void;
-  onOpenFeedback: () => void;
-  onOpenDesignSystem?: () => void;
+  theme?: 'light' | 'dark';
+  onToggleTheme?: () => void;
 }
 
-export function Header({ onStartSlideMode, onOpenFeedback, onOpenDesignSystem }: HeaderProps) {
+export function Header({
+  onStartSlideMode,
+  theme = 'dark',
+  onToggleTheme
+}: HeaderProps) {
   return (
     <motion.header
       initial={{ opacity: 0, y: -6 }}
@@ -77,25 +82,9 @@ export function Header({ onStartSlideMode, onOpenFeedback, onOpenDesignSystem }:
           transition={{ duration: 0.3, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center gap-2.5 shrink-0"
         >
-          {onOpenDesignSystem && (
-            <button
-              onClick={onOpenDesignSystem}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#38BDF8] bg-[#289CD7]/10 hover:bg-[#289CD7]/20 border border-[#289CD7]/30 rounded-lg transition-all whitespace-nowrap cursor-pointer hover:shadow-xs focus-visible:ring-2 focus-visible:ring-[#289CD7]"
-              title="Lihat spesifikasi resmi Design System & Token UI Inisiatif BA"
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>Design System</span>
-            </button>
+          {onToggleTheme && (
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           )}
-
-          <button
-            onClick={onOpenFeedback}
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700/60 rounded-lg transition-all whitespace-nowrap cursor-pointer hover:shadow-xs focus-visible:ring-2 focus-visible:ring-[#289CD7]"
-            title="Formulir penilaian untuk Dewan Juri & Audiens"
-          >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Form Evaluasi Juri</span>
-          </button>
 
           <Button
             onClick={onStartSlideMode}

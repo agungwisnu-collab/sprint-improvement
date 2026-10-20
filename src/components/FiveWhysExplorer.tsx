@@ -6,10 +6,10 @@ export function FiveWhysExplorer() {
   const [activeStep, setActiveStep] = useState<number>(0);
 
   return (
-    <div className="bg-[#0E1420] border border-white/[0.08] rounded-2xl p-6 lg:p-8 shadow-xl">
+    <div className="bg-[#0E1522]/90 border border-white/[0.08] backdrop-blur-md rounded-2xl p-6 lg:p-8 shadow-xl">
       <div className="flex flex-wrap items-end justify-between gap-4 mb-8 pb-4 border-b border-white/[0.08]">
         <div>
-          <div className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
+          <div className="text-xs font-mono uppercase tracking-wider text-[#38BDF8] mb-1">
             Root Cause Investigation
           </div>
           <h3 className="text-xl font-bold text-white tracking-tight">
@@ -21,7 +21,7 @@ export function FiveWhysExplorer() {
         </div>
 
         {/* Step buttons */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#121A2A] rounded-xl border border-slate-800">
+        <div className="flex items-center gap-1.5 p-1 bg-[#090E17] rounded-xl border border-white/[0.08]">
           {FIVE_WHYS.map((item, idx) => (
             <button
               key={idx}
@@ -29,8 +29,8 @@ export function FiveWhysExplorer() {
               className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all cursor-pointer ${
                 activeStep === idx
                   ? idx === 4
-                    ? 'bg-emerald-600 text-white font-bold shadow-sm'
-                    : 'bg-[#289CD7] text-white font-bold shadow-sm'
+                    ? 'bg-emerald-600 text-white font-bold shadow-[0_0_12px_rgba(16,185,129,0.3)]'
+                    : 'bg-[#289CD7] text-white font-bold shadow-[0_0_12px_rgba(40,156,215,0.3)]'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -53,9 +53,9 @@ export function FiveWhysExplorer() {
               className={`rounded-xl border transition-all cursor-pointer overflow-hidden ${
                 isActive
                   ? isTurningPoint
-                    ? 'bg-[#101D1A] border-emerald-500/50 ring-1 ring-emerald-500/30'
-                    : 'bg-[#121A2A] border-[#289CD7]/50 ring-1 ring-[#289CD7]/30'
-                  : 'bg-[#0E1420] border-slate-800/80 hover:border-slate-700 opacity-80 hover:opacity-100'
+                    ? 'bg-[#0E1F1A] border-emerald-500/60 ring-1 ring-emerald-500/40 shadow-lg'
+                    : 'bg-[#131D2E] border-[#289CD7]/60 ring-1 ring-[#289CD7]/40 shadow-lg shadow-[#289CD7]/10'
+                  : 'bg-[#0E1522]/80 border-white/[0.06] hover:border-white/[0.15] opacity-80 hover:opacity-100'
               }`}
             >
               <div className="p-4 flex items-center justify-between gap-4">
@@ -63,9 +63,9 @@ export function FiveWhysExplorer() {
                   <div
                     className={`w-7 h-7 rounded-lg font-mono text-xs font-bold flex items-center justify-center shrink-0 ${
                       isTurningPoint
-                        ? 'bg-emerald-500 text-slate-950'
+                        ? 'bg-emerald-500 text-slate-950 font-black'
                         : isActive
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-[#289CD7] text-white'
                         : 'bg-slate-800 text-slate-400'
                     }`}
                   >

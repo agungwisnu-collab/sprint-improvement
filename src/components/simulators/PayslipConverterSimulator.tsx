@@ -75,11 +75,11 @@ export function PayslipConverterSimulator() {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
+    <div className="bg-[#0E1522] border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl">
       {/* Header */}
-      <div className="px-5 py-3 bg-slate-950 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <div className="px-5 py-3 bg-[#070A0F] border-b border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
+          <FileSpreadsheet className="w-4 h-4 text-[#38BDF8]" />
           <span className="text-sm font-semibold text-white">
             Payslip Converter · Normalisasi ke Hashmicro Human Capital
           </span>
@@ -89,19 +89,19 @@ export function PayslipConverterSimulator() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex bg-slate-900 border border-slate-700 rounded-lg p-0.5">
+          <div className="flex bg-[#0B0F17] border border-white/[0.08] rounded-lg p-0.5">
             <button
               onClick={() => setActiveTab('preview')}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                activeTab === 'preview' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+                activeTab === 'preview' ? 'bg-[#131D2E] text-white shadow-sm border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Hasil Normalisasi HC
             </button>
             <button
               onClick={() => setActiveTab('rules')}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                activeTab === 'rules' ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-all ${
+                activeTab === 'rules' ? 'bg-[#131D2E] text-white shadow-sm border border-white/[0.08]' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Matriks Mapping Kode (ERP)
@@ -111,7 +111,7 @@ export function PayslipConverterSimulator() {
           <button
             onClick={handleSimulateConvert}
             disabled={isProcessing}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium rounded-lg transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-[#38BDF8] via-[#289CD7] to-[#0284C7] hover:brightness-110 disabled:opacity-50 text-white text-xs font-semibold rounded-lg transition-all shadow-[0_0_15px_rgba(40,156,215,0.3)]"
           >
             {isProcessing ? (
               <>
@@ -130,7 +130,7 @@ export function PayslipConverterSimulator() {
 
       {/* Body */}
       {activeTab === 'preview' ? (
-        <div className="p-4 bg-slate-900">
+        <div className="p-4 bg-[#0B0F17]">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="text-xs text-slate-300 flex items-center gap-2">
               <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
@@ -142,34 +142,34 @@ export function PayslipConverterSimulator() {
 
             <button
               onClick={handleDownloadHashmicroFormat}
-              className="flex items-center gap-1.5 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
               Download Template Siap Import HC (.csv)
             </button>
           </div>
 
-          <div className="overflow-x-auto border border-slate-800 rounded-lg">
+          <div className="overflow-x-auto border border-white/[0.08] rounded-lg">
             <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-950 text-slate-400 uppercase font-medium">
+              <thead className="bg-[#070A0F] text-slate-400 uppercase font-mono text-[10px] tracking-wider border-b border-white/[0.08]">
                 <tr>
-                  <th className="px-3 py-2">NIK</th>
-                  <th className="px-3 py-2">Nama Karyawan</th>
-                  <th className="px-3 py-2">Jabatan</th>
-                  <th className="px-3 py-2 text-right">BASIC</th>
-                  <th className="px-3 py-2 text-right">ALW1 (Jab)</th>
-                  <th className="px-3 py-2 text-right">ALW2 (Hadir)</th>
-                  <th className="px-3 py-2 text-right">ALW7 (Tugas)</th>
-                  <th className="px-3 py-2 text-right">BONUS</th>
-                  <th className="px-3 py-2 text-right">OVT (Lembur)</th>
-                  <th className="px-3 py-2 text-right">BPJS KES</th>
-                  <th className="px-3 py-2 text-right">BPTK</th>
-                  <th className="px-3 py-2 text-right text-emerald-400 font-semibold">Total Nett</th>
+                  <th className="px-3 py-2.5">NIK</th>
+                  <th className="px-3 py-2.5">Nama Karyawan</th>
+                  <th className="px-3 py-2.5">Jabatan</th>
+                  <th className="px-3 py-2.5 text-right">BASIC</th>
+                  <th className="px-3 py-2.5 text-right">ALW1 (Jab)</th>
+                  <th className="px-3 py-2.5 text-right">ALW2 (Hadir)</th>
+                  <th className="px-3 py-2.5 text-right">ALW7 (Tugas)</th>
+                  <th className="px-3 py-2.5 text-right">BONUS</th>
+                  <th className="px-3 py-2.5 text-right">OVT (Lembur)</th>
+                  <th className="px-3 py-2.5 text-right">BPJS KES</th>
+                  <th className="px-3 py-2.5 text-right">BPTK</th>
+                  <th className="px-3 py-2.5 text-right text-emerald-400 font-semibold">Total Nett</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 font-mono">
+              <tbody className="divide-y divide-white/[0.06] font-mono">
                 {SAMPLE_CONVERTED.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-800/50">
+                  <tr key={idx} className="hover:bg-[#131D2E]/50 transition-colors">
                     <td className="px-3 py-2 text-white font-medium">{row.nik}</td>
                     <td className="px-3 py-2 font-sans text-slate-200">{row.nama}</td>
                     <td className="px-3 py-2 font-sans text-slate-400">{row.jabatan}</td>
@@ -191,17 +191,17 @@ export function PayslipConverterSimulator() {
           </div>
         </div>
       ) : (
-        <div className="p-4 bg-slate-950 max-h-80 overflow-y-auto">
-          <div className="text-xs text-slate-400 mb-3">
+        <div className="p-4 bg-[#070A0F] max-h-80 overflow-y-auto">
+          <div className="text-xs text-slate-400 mb-3 font-mono">
             Matriks Aturan Pengisian Draft Payroll → Standar Kode Impor Hashmicro HC ERP:
           </div>
           <div className="space-y-2">
             {MAPPING_RULES.map((rule, idx) => (
-              <div key={idx} className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div key={idx} className="p-2.5 bg-[#0E1522] border border-white/[0.08] rounded-lg flex flex-wrap items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-3">
                   <span className="font-mono font-medium text-slate-200">{rule.kolomInput}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-blue-400" />
-                  <span className="font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+                  <ArrowRight className="w-3.5 h-3.5 text-[#38BDF8]" />
+                  <span className="font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
                     {rule.kodeOutput}
                   </span>
                 </div>
@@ -215,7 +215,7 @@ export function PayslipConverterSimulator() {
       )}
 
       {/* Footer */}
-      <div className="px-4 py-2.5 bg-slate-950/80 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400">
+      <div className="px-4 py-2.5 bg-[#070A0F] border-t border-white/[0.08] flex flex-wrap items-center justify-between text-xs text-slate-400">
         <div>
           Sebelumnya: Membutuhkan pencocokan manual kolom satu per satu setiap bulan.
         </div>
