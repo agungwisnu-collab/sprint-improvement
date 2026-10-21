@@ -28,7 +28,7 @@ export const TEAM_INFO = {
   event: "Stand Up for Improvement Batch 5",
   organization: "Ethos Group - Business Analyst Division",
   members: [
-    { name: "Agung Wisnu Anggoro", role: "Business Analyst & AI Solution Engineer" },
+    { name: "Agung Wisnu Anggoro", role: "Business Analyst" },
     { name: "Nina Verina", role: "Business Analyst" },
     { name: "Lisa Amri Mubarokah", role: "Business Analyst" }
   ]
